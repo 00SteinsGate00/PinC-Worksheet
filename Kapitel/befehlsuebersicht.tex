@@ -17,7 +17,7 @@ In Variablen kann man Werte speichern, dafür gibt es verschiedene Typen, unter 
 
 Es gibt noch viele andere Typen für Variablen.
 
-Variablen werden anch dem folgenden Schema angelegt
+Variablen werden nach dem folgenden Schema angelegt
 
 \begin{lstlisting}
 	<typ> <name>;
@@ -28,5 +28,184 @@ und können bei ihrer \emph{Initialisierung} direkt einen Wert zugewiesen bekomm
 \lstinputlisting{CodeSnippets/Befehlsuebersicht/variablen.c} 
 
 
+
+\section{Arithmetik}
+
+In \textbf{C} gibt es viele verschiedene Arithmetische Operatoren, im folgenden einige wichtige
+
+\begin{itemize}
+ 	\item \textbf{\(+\)} - Addition
+ 	\item \textbf{\(-\)} - Subtraktion
+ 	\item \textbf{\(*\)} - Multiplikation
+ 	\item \textbf{\(/\)} - Division
+ 	\item \textbf{\%} - Modulo   
+ \end{itemize} 
+
+ Diese \emph{arithmethischen Operatoren} können sowohl mit Variablen als auch mit Konstanten genutzt werden.
+
+ \lstinputlisting{CodeSnippets/Befehlsuebersicht/arithmetik.c} 
+
+Um das programmieren etwas zu erleichtern gibt es folgende Abkürzungen.
+
+\lstinputlisting{CodeSnippets/Befehlsuebersicht/arithmetik_abkuerzungen.c} 
+
+
+
+\section{Bedingungen}
+
+Viele Programme sollen ja nicht immer gleich ablaufen, und sich verschieden verhalten, wenn bestimmte Bedingungen eintreten.
+
+Dafür gibt es den \emph{if} Befehle, oder auch den \emph{if else} Befehl. Mit diesem können so genannte \emph{bedingte Sprünge} gemacht werden. Die Synthax sieht wie folgt aus
+
+\begin{lstlisting}[language=c]
+if(<Bedingung>){
+	<Code>
+}
+\end{lstlisting}
+
+Dabei wird <Code> nur ausgeführt, wenn <Bedingung> wahr ist.
+
+Als Bedingung können beliebig komplexe Ausdrücke verwendet werden, solange sich diese auf einen \emph{Wahrheitswert} evaluieren.
+
+Korrekte Bedingungen:
+
+\begin{itemize}
+	\item \(x > 5\)
+	\item \(y == x\)
+	\item \(z > x\) \&\& \(z < x\)
+\end{itemize}
+
+Ungültige Bedingungen.
+
+\begin{itemize}
+	\item \(x * 4\)
+	\item \(y = x\)
+	\item \(x++\)
+\end{itemize}
+
+Es gibt noch eine so genannte \emph{else} Bedingung, die genau dann ausgeführt wird, wenn die Bedingung in dem \emph{if} Befehl falsch ist.
+
+\begin{lstlisting}[language=c]
+if(<Bedingung>){
+	<Code der ausgefuehrt wird wenn die Bedingung stimmt>
+}
+else{
+	<Code der ausgefuehrt wird wenn die Bedingung nicht stimmt>
+}
+\end{lstlisting}
+
+Damit lassen sich Programme basteln, die sich verschieden Verhalten, je nachdem wie die Umstände so sind.
+
+\lstinputlisting{CodeSnippets/Befehlsuebersicht/Bedingungen.c}
+
+
+
+\section{Schleifen} 
+
+Manchmal möchte man, dass ein Stück Code mehrfach ausgeführt wird. Geht es nur um 2 oder 3 mal, könnte man das ganze auch einfach mehrfach hinschreiben. Wenn es dann aber um 100, 1000 oder gar 10000 fach geht, macht das ganze eher weniger Spaß. Dazu kommt, dass man oft nicht weiß, wie oft der Code Teil ausgeführt wird.
+
+Die Bedingungen werden dabei exakt wie bei dem \emph{if} Befehl aufgestellt.
+
+Für solche Fälle gibt es so genannte \emph{Schleifen}. \textbf{C} bietet drei verschiedene.
+
+\subsection{For-Schleife}
+
+Die \emph{For-Schleife} verwendet man, wenn man ein Stück Code eine feste Anzahl oft ausführen möchte. Die Anzahl kann dabei variable sein, jedoch fest. \emph{For-Schleifen} nutzen so genannte \emph{Laufvariablen} mit denen man von einem \emph{Startwert} bis zu einem \emph{Endwert} läuft.
+
+\begin{lstlisting}[language=c]
+for(<Startwert> ; <Abbruchbedingung> ; <Veraenderung>){
+	<Code der mehrfach ausgefuehrt werden soll>
+}
+\end{lstlisting}
+
+In den so genannten \emph{Kopf} einer \emph{For-Schleife} schreibt man den Wert, bei dem die Zählvarible beginnen soll, die Bedingung bei der aus der Schleife ausgebrochen werden soll und die Art, wie die \emph{Laufvariable} in jedem \emph{Schleifendurchlauf} verändet werden soll.
+
+\lstinputlisting[firstline=1, lastline=9]{CodeSnippets/Befehlsuebersicht/for_schleifen.c} 
+
+Das Programm gibt 10 mal den Wert von \(i\) aus. \(i\) wird dabei in jedem \emph{Schleifendurchlauf} um 1 erhöht.
+
+\lstinputlisting[firstline=11, lastline=24]{CodeSnippets/Befehlsuebersicht/for_schleifen.c} 
+
+Dieses Programm berechnet für zwei Variablen \(x\) (hier \emph{basis}) und \(y\) (hier \emph{exponent}) das Ergebnis von \(x^y\).
+
+
+\subsection{While-Schleife}
+
+Die \emph{While-Schleife} setzt man immer dann ein, wenn man nicht genau weiß, wie oft die Schleife laufen soll. \emph{While-Schleifen} können so genannte \emph{Endlosschleifen} produzieren. Das sind Schleifen, die wie der Name bereits sagt, nie \emph{terminieren} sondern endlos weiter laufen.
+
+\begin{lstlisting}[language=c]
+ while(<Bedingung>){
+ 	<Code der mehrfach ausgefuehrt werden soll>
+ }
+ \end{lstlisting}
+
+ Die Schleife wiederholt den Code solange die Bedingung wahr ist.
+
+ \lstinputlisting[firstline=1, lastline=3]{CodeSnippets/Befehlsuebersicht/while_schleifen.c} 
+
+ Da die Bedingung \( 3 < 5 \) immer wahr ist, wird diese Schleife endlos laufen.
+
+ \lstinputlisting[firstline=5, lastline=9]{CodeSnippets/Befehlsuebersicht/while_schleifen.c} 
+
+ Diese Schleifen multipliziert \(x\) so oft mit sich selbst, bis \(x\) größer als 10000 ist.
+
+\lstinputlisting[firstline=11, lastline=13]{CodeSnippets/Befehlsuebersicht/while_schleifen.c} 
+
+Diese Schleife wird nicht ein einziges mal ausgeführt, da die Bedingung nie wahr ist.
+
+
+
+\subsection{Do-While-Schleife}
+
+Die \emph{Do-While-Schleife} verhält sich exakt wie die \emph{While-Schleife}, mit der Ausnahme, dass der Code mindestens einmal ausgeführt wird.
+
+\begin{lstlisting}[language=c]
+do{
+ 	<Code der mehrfach ausgefuehrt werden soll>
+}while(<Bedingung>);
+\end{lstlisting} 
+
+Der Code wird so lange ausgeführt, wie die Bedingung wahr ist, mindestens aber einmal.
+
+\lstinputlisting{CodeSnippets/Befehlsuebersicht/do_while_schleifen.c}
+
+
+
+\section{Funktionen}
+
+Manchmal hat man ein Stück Code geschrieben und möchte es an mehreren Stellen verwenden. Dann kann man das ganze natürlich mehrfach schreiben, aber sinnvoller ist es eine Funktion zu verwenden. Eine Funktion wird wie folgt definiert
+
+\begin{lstlisting}[language=c]
+<Rueckgabetyp> <name>(<Typ> <p1Name>, .. , <Typ> <pnName>){
+	<FunktionsCode>
+}
+\end{lstlisting}
+
+Der \emph{Rückgabetyp} bezeichnet dabei den Typ des Wertes, den die Funktion am Ende zurück gibt. Also so etwas wie \emph{int}, \emph{float} oder auch \emph{char}. Möchte man nichts zurück geben, ist der \emph{Rückgabetyp} \textbf{void}.
+
+Mit dem \emph{Funktionsnamen} kann man die Funktion später aufrufen.
+
+Mit den \emph{Parametern} kann man der Funktion Werte übergeben. Jedem von ihnen wird ein \emph{Typ} und ein \emph{Parametername} zugeordnet. Mit diesem \emph{Parametername} kann man in der Funktion auf diese Variable zugreifen.
+
+Mit dem Befehel \emph{return} beendet man die Funktion und gibt den Wert zurück, den man zusammen mit dem \emph{return} Befehl angibt, zurück.
+
+
+\lstinputlisting[firstline=1, lastline=3]{CodeSnippets/Befehlsuebersicht/funktionen_addition.c} 
+
+Die Funktion hat den namen \"addition\", gibt einen Wert vom Typ \textbf{int} zurück, bekommt 2 Parameter vom Typ \emph{int} mit dem Namen \(a\) und \(b\) und berechnet deren Summe. Diese wird mit dem \emph{return} Befehl zurück gegeben.
+
+Die Funktion kann dann ganz einfach in der \emph{main} Funktion aufgerufen werden.
+
+\lstinputlisting[firstline=5, lastline=21]{CodeSnippets/Befehlsuebersicht/funktionen_addition.c} 
+
+Mit den \emph{Parameternamen} kann innerhalb der Funktion auf diese zugegriffen werden. Wichtig dabei ist, dass diese Parameter nur in der Funktion selbst sichtbar (das heißt benutzbar) sind.
+
+Alle Variablen die innerhalb einer Funktion \emph{initialisiert} werden, sind nur dort sichtbar und verwendbar. Es kann durchaus mehrere Variablen mit gleichem Namen geben.
+
+\lstinputlisting{CodeSnippets/Befehlsuebersicht/funktionen_sichtbarkeit.c} 
+
+Funktionen können beliebig komplex werden. Folgende Funktion berechnet zum Beispiel die Fakultät einer Zahl.
+
+\lstinputlisting{CodeSnippets/Befehlsuebersicht/funktionen_fakultaet.c} 
 
 \end{document}
