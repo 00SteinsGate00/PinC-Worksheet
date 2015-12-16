@@ -1,0 +1,160 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[top=50pt,bottom=60pt,left=75pt,right=80pt]{geometry}
+
+% for German
+\usepackage[ngerman]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+\usepackage{subfiles} 
+\usepackage{hyperref} 
+\usepackage{listings} 
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{lmodern}
+\usepackage{multicol}
+
+
+% listings Optionen
+\lstset{
+  language=c,
+  numbers=left,
+  backgroundcolor=\color{lightgray},
+  xleftmargin=1cm,
+  frame=lrtb,
+  tabsize=4,
+  basicstyle =\ttfamily,
+}
+\begin{document}
+
+\section{Computer und Programmiersprachen}
+
+Was sind eigentlich Computer und Programmiersprachen? \\
+Ein Computer hat \textbf{Speicher} und einen \textbf{Prozessor}. Im Speicher können Zahlen abgespechert werden und der Prozessor kann rechnen. \\
+
+\subsection{Speicher}
+
+Den Speicher kann man sich vorstellen als eine lange Liste von Speicherplätzen, die der Reihe nach nummeriert sind. Anders als gewohnt, fängt die Nummerierung bei \textbf{0} an. \\
+
+\begin{lstlisting}[numbers=none]
+|Speicherplatz Nr. 0| Speicherplatz Nr. 1|Speicherplatz Nr. 2|...
+\end{lstlisting}
+
+\vspace{3pt}
+Die Nummer eins Speicherplatztes nenn man die \textbf{Adresse} dieses Speicherplatztes. \\
+Ein Speicherplatz ist für gewöhnlich \textbf{1 Byte} (8 Bit) groß und kann deswegen 256 verschiedene Zahlen speichern.
+0000 0000 -> ...  ... -> 1111 1111 (256 verschiedene Zustände) $2^8 = 256$ \\
+
+\begin{tabbing}
+xxx\=xxxxxxxxxxxxxxxxx\=  \kill
+\>1 Kilobyte (kb) \>= 1024 ($2^{10}$) Bytes\\
+\>1 Megabyte (mb) \>= 1024 ($2^{10}$) Kilybytes\\
+\>1 Gigabyte (gb) \>= 1024 ($2^{10}$) Megabytes\\
+\end{tabbing}
+
+\subsection{Prozessor}
+
+Der Prozessor ist eine elektrische Schaltung, die so gebaut wurde, dass sie ein paar grundlegende Dinge kann.
+Er kann z.B addieren, subtrahieren, multiplizieren und einiges mehr. Diese grundlegenden Operationen nennt man den \textbf{Befehlssatz} des Prozessors.\\
+Ein Programm ist einfach nur eine lange Liste von solchen Befehlen, die nacheinander ausgeführt werden. \\
+
+\textit{kleines Beispielprogramm:}
+\begin{lstlisting}
+addiere die Zahlen 5 und 6
+speichere das Ergebnis an Adresse 11
+multipliziere die Zahlen 3 und 7
+speichere das Ergebnis an Adresse 12
+addiere die Zahlen, die an den Adressen 11 und 12 stehen
+speichere das Ergebnis in Adresse 13
+\end{lstlisting}
+\vspace{5pt}
+
+Die Aufgabe eines Programmierers ist es, solche Listen von Befehlen zu schreiben, die der Computer dann abarbeitet. Es gibt natürlich viele verschiedene Möglichkeiten so ein Programm aufzuschreiben:\\
+\vspace{5pt}
+
+\textit{unterschiedliche Arten das gleiche Programm aufzuschreiben:}
+\begin{multicols}{2}
+\begin{lstlisting}
+adr11 <-- 5 + 6
+adr12 <-- 3 * 7
+adr13 <-- adr11 + adr12
+\end{lstlisting}
+\begin{lstlisting}
+add(5,6)     -> $11
+mult(3,7)    -> $12
+add($11,$12) -> $13
+\end{lstlisting}
+\end{multicols}
+Die vielen unterschiedlichen Arten ein Programm aufzuschreiben nennt man \textbf{Programmiersprachen}. Wenn man ein Programm in einer Programmiersprache geschrieben hat kann man es aber noch nicht sofort ausführen, denn der Prozessor möchte das Programm in einem ganz bestimmten Format haben, das für Menschen schwer leserlich ist (dieses Format nenn man \textbf{Maschinensprache}). Dafür gibt es den \textbf{Compiler}. Der Compiler nimmt eine Textdatei, in der Programmcode steht, und formt diese um in das Format, das der Prozessor versteht. Diese Datei, die der Compiler erzeugt, kann man dann ausführen.
+
+\newpage
+\section{Die Linux Konsole und der C-Compiler}
+
+\subsection{Linux und die Konsole}
+Früher, als Computer noch sehr langsam waren und es weder schicke Fenster noch eine Maus gab, musste man den Computer ausschließlich mit der Tastatur bedienen.
+Die Computer dieser Zeit bestanden aus 3 Teilen: der eigentliche Computer, ein Bildschirm und eine Tastatur.
+Ein Programm, das in dem Coumputer läuft, kann einzelen Textzeichen an den Bildschirm schicken. Dieser stellt das Textzeichen dann dar.
+Wenn man Tasten auf der Tastatur drückt, wird das zugehörige Textzeichen an den Computer gesendet und gleichzeitig auf dem Bildschirm dargestellt.
+Die Einheit von einem Bildschirm und einer Tastatur, die so benutzt werden um einen Computer zu steuern, nennt man \textbf{Terminal} oder \textbf{Konsole}.\\
+
+\textbf{Linux} ist ein kostenloses Betriebssystem, dessen Programmcode frei einsehbar ist, das man in allen Aufgabenbereichen benutzen kann und das immer ein Terminal und einen Compiler für die Programmiersprache C hat. Wenn man im Startmenü nach \textit{Terminal} oder \textit{Konsole} sucht, findet man ein Programm, das sich genau so verhält, wie die alten Computer, die nur Textzeichen darstellen konnten und nur über die Tastatur bedient werden konnten.\\
+In diesem Fenster kann man einen Befehl eintippen und dann \textit{Enter} drücken um den Befehl auszuführen. Am linken Fensterrand steht immer der Name des Ordners, in dem man sich gerade befindet.\\
+
+\begin{tabbing}
+\textbf{wichtige Konsolenbefehle:} \\
+xxx\=xxxxxxxxxxx\=xxxxxxxxxxxxxxxx\= \kill
+
+\>\textbf{cd} \>change directory \>in einen Ordner hinein gehen, oder aus einem Ordner hinaus gehen \\
+\>\textbf{mkdir} \>make directory \>einen neuen Ordner anlegen \\
+\>\textbf{rm} \>remove \>Dateien oder Ordner löschen \\
+\>\textbf{ls} \>list \>alle Dateien und Unterordner im aktuellen Ordner auflisten \\
+\end{tabbing}
+Jedem dieser Befehle kann man Optionen und Parameter mitgeben, bevor man ihn ausführt. Diese Optionen und Parameter werden, durch Leerzeichen getrennt, hinter den Namen des Befehls geschrieben.\\
+
+\textbf{Übungsaufgabe:} Einen Ordner anlegen und wieder löschen\\
+Öffne ein Terminalfenster, tippe \textbf{ls} ein und drücke \textit{Enter}. Dadurch werden alle vorhandenen Dateien und Unterordner aufgelistet.\\
+Tippe \textbf{mkdir testOrdner} ein und drücke \textit{Enter}. Dadurch wird ein neuer Ordner mit dem Namen \textit{testOrdner} erstellt.\\
+Rufe wieder den Befehl \textbf{ls} auf und überprüfe, ob der Ordner angelegt wurde.\\
+Tippe \textbf{cd testOrdner} ein und drücke \textit{Enter} um in den neuen Ordner hinein zu gehen. Am linken Fensterrand sollte nun zu sehen sein, dass man sich in dem neuen Ordner befindet.\\
+Der Befehl \textbf{cd ..} bring einen wieder zurück in den vorherigen Ordner. (Zwei Punkte meinen immer den Ordner, der in der Ordnerstruktur eine Ebene über dem jetzigen ist.) Der Befehl \textbf{cd} alleine (ohne Optionen und Paramater) lässt einen in den \textit{home-Ordner} zurück gehen, in dem man am Anfang immer startet.\\
+Gehe aus dem eben angelgten Ordner heraus und rufe den Befehl \textbf{rm testOrdner} auf um ihn wieder zu löschen. Die Konsole wird eine Fehlermeldung ausgeben, weil der Befehl \textbf{rm} nur Dateien löschen kann. Mit der zusätzlichen Option \textbf{-r} kann man auch Ordner und alle darin enthaltenen Unterordner und Dateien löschen.\\
+Rufe nun \textbf{rm -r testOrdner} auf um den Ordner zu löschen.
+
+\newpage
+\subsection{Der C-Compiler}
+
+In Kapitel 1.2 wurde erklärt was ein Compiler ist. Unter Linux gibt es die so genannte \textbf{GCC}. Das steht für \textit{Gnu Compiler Collection} und ist eine Ansammlung von Compilern für viele verschiedene Programmiersprachen. Der wichtigste davon ist der C-Compiler. Wenn man in der Konsole \textbf{gcc} eintippt, ruft das standartmäßig den C-Compiler auf.\\
+
+Öffne nun einen Texteditor (nicht Word oder Exel, sondern einen reinen Texteditor, der keine schicken Formatierungen macht) und tippe den folgenden C-Code ein. (Du kannst erst einmal ignorieren, dass einige Worte fett abgedruckt sind)\\
+
+\begin{lstlisting}
+#include <stdio.h>
+
+int main(void) {
+    printf("Hallo! Ich bin ein C-Programm.\n");
+    return 0;
+}
+\end{lstlisting}
+
+Speichere diese Datei in einem Odner ab und nenne sie \textbf{Hallo.c} (Tipp: die Tastenkombination \textit{Strg+s} steht in den meisten Texteditoren für abspeichern)\\
+Nutze nun die Konsole und den Befehl \textbf{cd} um in den Ordner zu gehen, in dem die Datei gespeichert wurde. Vergewissere dich mit \textbf{ls}, dass die Datei wirklich da ist.\\
+Rufe den Befehl \textbf{gcc Hallo.c} auf um den C-Compiler zu starten und ihm zu sagen, in welcher Datei Programmcode für ihn liegt.\\
+Rufe noch einmal \textbf{ls} auf. In dem Ordner sollten nun zwei Dateien liegen. \textbf{Hallo.c} und \textbf{a.out}.\\
+Die Datei \textbf{a.out} wurde vom C-Compiler erzeugt. In ihr ist das Programm, das der Compiler für den Prozessor übersetzt hat.
+\textbf{Der Compiler hat von C nach Maschinensprache übersetzt} (siehe Kapitel 1.2) \\
+Tippe nun \textbf{./a.out} ein und drücke \textit{Enter} um das Programm auszuführen (achte darauf einen Punkt und einen Schrägstrich vor den Namen der Datei zu setzen). Auf der Konsole sollte folgender Text ausgegeben werden:\\
+
+\textit{Hallo! Ich bin ein C-Programm.}\\
+
+Der Compiler nennt die Dateien, die er erzeugt, standartmäßig \textit{a.out}.\\
+Mit der Optionen \textbf{-o} (O wie Output) kann man dem Compiler sagen, welchen Namen er der erzugten Datei geben soll.\\
+Rufe \textbf{rm a.out} auf um die eben erzeugte Datei zu löschen.\\
+Tippe jetzt \textbf{gcc Hallo.c -o Hallo} ein und drücke \textit{Enter}. Dieser Befehl sagt dem Compiler, dass in der Datei \textbf{Hallo.c} der Programmcode zu finden ist und er eine Datei mit dem Namen \textbf{Hallo} erzeugen soll. Hinter dem \textbf{-o} kann man einen beliebigen Namen angeben.\\
+Das erzeugte Programm kann man nun mit \textbf{./Hallo} ausführen.\\
+
+allgemein:\\
+Programmcode in der Sprache C gehört in eine Textdatei mit der Ednung .c\\
+Mit dem Befehl \textbf{gcc} \textit{<Dateiname.c>} \textbf{-o} \textit{<Name der Zieldatei>} kann C-Code zu einem ausführbaren Programm übersetzt werden.\\
+Mit \textbf{./}\textit{<Programmname>} kann man ein Programm ausführen.
+\end{document}
