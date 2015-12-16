@@ -4,6 +4,45 @@
 	
 \chapter{Befehlsübersicht} 
 
+\section{Programmstruktur}
+
+In \textbf{C} geschriebene Programme haben eine generelle Struktur die es zu beachten gibt. Diese sieht wie folgt aus
+
+\begin{lstlisting}
+ int main(){
+ 	<Code>
+ 	return 0;
+ }
+ \end{lstlisting} 
+
+Die so genannte \emph{main Funktion} ist der Haupteil des Programms. Wird das Programm gestartet beginnt es genau am Anfang der \emph{main Funktion}. Gibt es keine \emph{main Funktion} weiß der Computer nicht wo er anfangen soll. \\
+
+\textit{return 0} \\
+
+Dieser Befehl beendet das Programm und die \emph{0} ist dabei eine Konvention, welche fest gelegt wurde. \emph{0} bedeutet hierbei, dass alles in Ordnung war und das Programm korrekt terminiert wurde. Dies wird an das Betriebssystem mitgeteilt. 
+
+
+
+\section{Includes} 
+
+Mit so genannten \emph{includes} kann man anderen Programmcode in sein eigenes Programm einbinden.
+
+\begin{lstlisting}
+#include <<Paketname>>
+\end{lstlisting}
+
+Ein Paket das ganz oft benutzt wird und auch benötigt wird, sobald ihr etwas ausgeben wollt, ist \emph{stdio.h}. Der name steht dabei für Standart Input/Output. Dieses Paket stellt einige nützliche Befehle für die Ein- und Ausgabe.
+
+Die wichtigsten hierbei sind \emph{printf} und \emph{scanf}. Mit ersterem kann man Text ausgeben und mit letzterem Eingaben des Benutzers einlesen.
+
+\lstinputlisting{CodeSnippets/Befehlsuebersicht/print.c} 
+
+Dieses Programm gibt auf der Konsole "Hallo Welt!" aus. Ohne den \emph{include} Befehl, wüsste der Compiler nicht was printf eigentlich ist.
+
+\lstinputlisting{CodeSnippets/Befehlsuebersicht/scan.c}
+
+Dieses Programm erwartet eine Eingabe von dem Benutzer und speichert diese in der Variable \(x\). 
+
 \section{Variablen}
 
 In Variablen kann man Werte speichern, dafür gibt es verschiedene Typen, unter anderem:
@@ -20,14 +59,32 @@ Es gibt noch viele andere Typen für Variablen.
 Variablen werden nach dem folgenden Schema angelegt
 
 \begin{lstlisting}
-	<typ> <name>;
+<typ> <name>;
 \end{lstlisting}
 
 und können bei ihrer \emph{Initialisierung} direkt einen Wert zugewiesen bekommen.
 
 \lstinputlisting{CodeSnippets/Befehlsuebersicht/variablen.c} 
 
+\subsection{Variablen mit printf ausgeben} 
 
+Möchte man Variablen mit printf ausgeben, muss dabei beachten, von welchem Typ diese ist. Ein kleines Beispiel verdeutlicht dies.
+
+\lstinputlisting{CodeSnippets/Befehlsuebersicht/print_int.c}
+
+Das \emph{\%i} wird dabei benutzt, weil \(x\) vom typ \emph{int} ist.
+
+\begin{itemize}
+	\item \textbf{\%i} - int
+	\item \textbf{\%d} - int
+	\item \textbf{\%ld} - long int
+	\item \textbf{\%f} - float
+	\item \textbf{\%lf} - double
+	\item \textbf{\%c} - char
+	\item \textbf{\%p} - pointer 
+\end{itemize}
+
+Für scanf gilt das genau so.
 
 \section{Arithmetik}
 
@@ -51,6 +108,96 @@ Um das programmieren etwas zu erleichtern gibt es folgende Abkürzungen.
 
 
 
+\section{Logische Operatoren} 
+
+
+Logische Operatoren unterscheiden sich ein wenig von den arithmetischen, die man sonst so kennt. Formeln mit logischen Operatoren evaluieren immer auf einen so genannten \emph{Wahrheitswert}: \textbf{true} oder \textbf{false}. Diese \emph{keywords} gibt es in \textbf{C} aber leider nicht. In \textbf{C} bedeutet die Zahl \(0\) \textbf{true} und alles andere bedeutet \textbf{false}.
+
+Es gibt unter anderem folgende logische Operatoren in \textbf{C}
+
+\begin{itemize}
+	\item \textbf{\&\&} - logisches Und
+	\item \textbf{||} - logisches Oder
+	\item \textbf{\^}  - exklusives Oder
+	\item \textbf{!}  - Negation
+\end{itemize}
+
+Im folgenden werden die Operatoren mit Wahrheitstabellen veranschaulicht
+
+\begin{figure}[H]
+\begin{center}
+\begin{subfigure}[b]{0.2\textwidth}
+\centering
+\begin{tabular}{ c | c | c }
+a & b & a \&\& b \\
+\hline
+\hline
+0 & 0 & 0 \\
+\hline
+0 & 1 & 0 \\
+\hline
+1 & 0 & 0 \\
+\hline
+1 & 1 & 1 \\
+\end{tabular}
+\end{subfigure}
+\begin{subfigure}[b]{0.2\textwidth}
+\centering
+\begin{tabular}{ c | c | c }
+a & b & a || b \\
+\hline
+\hline
+0 & 0 & 0 \\
+\hline
+0 & 1 & 1 \\
+\hline
+1 & 0 & 1 \\
+\hline
+1 & 1 & 1 \\
+\end{tabular}
+\end{subfigure}
+\begin{subfigure}[b]{0.2\textwidth}
+\centering
+\begin{tabular}{ c | c | c }
+a & b & a \^{} b \\
+\hline
+\hline
+0 & 0 & 0 \\
+\hline
+0 & 1 & 1 \\
+\hline
+1 & 0 & 1 \\
+\hline
+1 & 1 & 0 \\
+\end{tabular}
+\end{subfigure}
+\begin{subfigure}[b]{0.2\textwidth}
+\centering
+\begin{tabular}{ c | c }
+a & !a \\
+\hline
+\hline
+0 & 1 \\
+\hline
+1 & 0 \\
+\end{tabular}
+\end{subfigure}
+\end{center}
+\end{figure}
+
+
+Andere Operatoren, die nicht direkt mit Wahrheitswerten arbeiten aber solche ausgeben sind z.B.
+
+\begin{itemize}
+	\item \textbf{>} - größer als
+	\item \textbf{<} - kleiner als
+	\item \textbf{>=} - größer gleich
+	\item \textbf{<=} - kleiner gleich
+	\item \textbf{==} - gleich
+\end{itemize}
+
+Diese Operatoren werden hauptsächlich bei Bedingungen verwendet
+
 \section{Bedingungen}
 
 Viele Programme sollen ja nicht immer gleich ablaufen, und sich verschieden verhalten, wenn bestimmte Bedingungen eintreten.
@@ -73,6 +220,7 @@ Korrekte Bedingungen:
 	\item \(x > 5\)
 	\item \(y == x\)
 	\item \(z > x\) \&\& \(z < x\)
+	\item \(a\) || \(b\)
 \end{itemize}
 
 Ungültige Bedingungen.
