@@ -1,13 +1,22 @@
 \documentclass{report}
 
+
 % Pakete für eine sinnvolle Unterstützung der Deutschen Sprache
 \usepackage[ngerman]{babel} 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc} 
 
+% Generelle Dokumentformatierung
+\usepackage[top=50pt,bottom=60pt,left=75pt,right=80pt]{geometry}
+
 \usepackage{subfiles} 
 \usepackage{hyperref} 
 \usepackage{listings} 
+
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{lmodern}
+\usepackage{multicol}
 
 % listings Optionen
 \lstset{
@@ -16,9 +25,12 @@
 	tabsize=4,
 	belowskip=3em,
 	aboveskip=3em,
+	xleftmargin=1cm,
+	basicstyle=\ttfamily,
+	showstringspaces=false,
 }  
 
-\title{Programmieren in C Worksheet}
+\title{\textbf{Programmieren in C Worksheet}}
 \author{Jan Holub \\ Alexander Schneiders}
 
 
@@ -26,7 +38,9 @@
 
 \maketitle
 
+\tableofcontents
 
+\subfile{./Kapitel/einfuehrung.tex} 
 \subfile{./Kapitel/befehlsuebersicht.tex}  	
 
 \end{document} 
