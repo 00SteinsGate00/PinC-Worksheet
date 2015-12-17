@@ -118,7 +118,6 @@ Es gibt unter anderem folgende logische Operatoren in \textbf{C}
 \begin{itemize}
 	\item \textbf{\&\&} - logisches Und
 	\item \textbf{||} - logisches Oder
-	\item \textbf{\^}  - exklusives Oder
 	\item \textbf{!}  - Negation
 \end{itemize}
 
@@ -126,7 +125,7 @@ Im folgenden werden die Operatoren mit Wahrheitstabellen veranschaulicht
 
 \begin{figure}[H]
 \begin{center}
-\begin{subfigure}[b]{0.2\textwidth}
+\begin{subfigure}[b]{0.3\textwidth}
 \centering
 \begin{tabular}{ c | c | c }
 a & b & a \&\& b \\
@@ -141,7 +140,7 @@ a & b & a \&\& b \\
 1 & 1 & 1 \\
 \end{tabular}
 \end{subfigure}
-\begin{subfigure}[b]{0.2\textwidth}
+\begin{subfigure}[b]{0.3\textwidth}
 \centering
 \begin{tabular}{ c | c | c }
 a & b & a || b \\
@@ -156,22 +155,7 @@ a & b & a || b \\
 1 & 1 & 1 \\
 \end{tabular}
 \end{subfigure}
-\begin{subfigure}[b]{0.2\textwidth}
-\centering
-\begin{tabular}{ c | c | c }
-a & b & a \^{} b \\
-\hline
-\hline
-0 & 0 & 0 \\
-\hline
-0 & 1 & 1 \\
-\hline
-1 & 0 & 1 \\
-\hline
-1 & 1 & 0 \\
-\end{tabular}
-\end{subfigure}
-\begin{subfigure}[b]{0.2\textwidth}
+\begin{subfigure}[b]{0.3\textwidth}
 \centering
 \begin{tabular}{ c | c }
 a & !a \\
