@@ -1,0 +1,197 @@
+\documentclass[c_worksheet.tex]{subfiles}
+
+\begin{document}
+  
+\chapter{Eigene Datentypen}
+
+\section{Warum will man eigene Datentypen?}
+
+Die standart Datentypen wie \textbf{int, float, double, char}... kennen wir schon. Wenn man sich neue Variablen von diesen Typen erstellen möchte schreibt man:
+\begin{lstlisting}
+int i;   //erstellt eine Variable vom Typ int
+char c;  //        .    .    .           float
+float f; //        .    .    .           double
+\end{lstlisting}
+
+Wenn man nun Dinge aus der realen Welt in Programmcode repräsentieren möchte, überlegt man sich aus welchen Variablen diese Dinge aufgebaut sind.\\
+z.B.: \textit{Ein Datum besteht aus drei Zahlen. Jahr, Monat und Tag. Also sollte ich mir drei Variablen erstellen.} \\
+
+Der Code dazu könnte so aussehen:
+\begin{lstlisting}
+int main(void) {
+    //3 Variablen fuer ein Datum erstellen
+    int zeitpunkt1_jahr;
+    int zeitpunkt1_monat;
+    int zeitpunkt1_tag;
+
+    //3 Variablen fuer ein anderes Datum erstellen
+    int zeitpuntk2_jahr;
+    int zeitpuntk2_monat;
+    int zeitpunkt2_tag;
+
+    //alle Variablen mit Werten fuellen
+    zeitpunkt1_jahr = 2015;
+    zeitpunkt1_monat = 9;
+    zeitpunkt1_tag = 15;
+    zeitpunkt2_jahr = 2016;
+    zeitpunkt2_monat = 3;
+    zeitpunkt2_tag = 26;
+
+    return 0;
+}
+\end{lstlisting}
+
+Weil das sehr schnell sehr unübersichtlich wird (am Ende hat man tausende Variablen) darf man sich eigene Datentypen erstellen, die aus Komponenten aufgebaut sind.
+Diese selbst erstellten Datentypen tragen den Namen \textbf{struct} (weil der Code durch sie strukturierter wird).
+
+\begin{lstlisting}
+//hier wird kein Befehl ausgefuehrt
+//hier wird ein neuer Datentyp mit dem Name 'struct Datum' erstellt
+struct Datum {   //der neue Datentyp hat 3 Komponenten
+    int jahr;
+    int monat;
+    int tag;
+};
+
+int main(void) {
+    //2 Variablen vom Typ 'struct Datum' erstellen
+    struct Datum zeitpunkt1;
+    struct Datum zeitpunkt2;
+
+    //und mit Werten fuellen
+    zeitpunkt1.jahr = 2015;
+    zeitpunkt1.monat = 9;
+    zeitpunkt1.tag = 15;
+
+    zeitpunkt2.jahr = 2016;
+    zeitpunkt2.monat = 3;
+    zeitpunkt2.tag = 26
+
+    return 0;
+}
+\end{lstlisting}
+
+In den Zeilen 11 und 12 werden Variablen mit den Namen \textit{zeitpunkt1} und \textit{zeitpunkt2} erstellt. Mit dem \textbf{Punkt-Operator} kann man dann auf die Komponenten dieser Variablen zugreifen. Diese kann man genauso benutzen wie einzelne Variablen. Man kann Werte in sie hineinschreiben und Werte aus ihnen herauslesen (siehe 2.3)
+
+\begin{lstlisting}
+zeitpunkt1.jahr = 2015;
+zeitpunkt2.jahr = zeitpunkt1.jahr;
+\end{lstlisting}
+
+Will man einen neuen Datentyp erstellen schreibt man allgemein:
+\begin{lstlisting}
+struct <name> {
+    <Typ von Komponente 1> <Name von Komponente 1>;
+    <Typ von Komponente 2> <Name von Komponente 2>;
+      .
+      .
+      .
+};
+\end{lstlisting}
+
+\section{Datentypen in einander schachteln}
+
+Variablen eines selbst erstellten Datentyps können auch wieder Komponenten eines anderen Datentyps sein.
+
+\begin{lstlisting}
+#include <stdio.h>
+
+//erstellt Datentypen mit Namen 'struct Datum'
+struct Datum { // 'struct Datum' besteht aus 3 Komponenten
+    int jahr;
+    int monat;
+    int tag;
+};
+
+/*erstellt Datentypen mit Namen 'struct Name'
+  beide Komponenten sind von Typ 'Pointer auf char') */
+struct Name { 
+    char *vorname;   //Speicheradresse an der der Vorname liegt
+    char *nachname;  //Speicheradresse an der der Nachname liegt
+};
+
+/*ein Student hat 3 Komponenten
+ *Komponente 'name' ist vom Typ 'struct Name'
+ *Komponente 'geburtsdatum' ist vom Typ 'struct Datum'
+ *Komponente 'matrikelNummer' ist vom Typ 'int' */
+struct Student {
+    struct Name name;
+    struct Datum geburtsdatum; 
+    int matrikelNummer; 
+};
+
+int main(void) {
+    struct Student Max;
+    Max.matrikelNummer = 335689;
+    Max.geburtsdatum.jahr = 1992;
+    Max.geburtsdatum.monat = 5;
+    Max.geburtsdatum.tag = 15;
+
+    Max.name.vorname = "Max";
+    Max.name.nachname = "Mustermann";
+
+    printf("%s ",Max.name.vorname);
+    printf("%s ist geboren am "Max.name.nachname);
+    printf("%d.",Max.geburtsdatum.tag);
+    printf("%d.",Max.geburtsdatum.monat);
+    printf("%d\n",Max.geburtsdatum.jahr);
+    printf("Seine Matrikelnummer ist: %d\n");
+    return 0;
+}
+\end{lstlisting}
+
+\begin{tabbing}
+Ausgabe: ``\=\textit{Max Mustermnn ist geboren am 15.5.1992}\\
+           \>\textit{Seine Matrikelnummer ist: 335689}''
+\end{tabbing}
+
+\section{Datentypen umbenennen}
+
+Mit dem Befehl \textbf{typedef} kann man einem Datentypen (den es bereits gibt) einen zusätlichen Namen geben.
+
+\begin{lstlisting}
+/*der Datentyp 'int' hat jetzt
+  den zweiten Namen 'GanzeZahl' */
+typedef int GanzeZahl;
+
+int main(void) {
+    int i;       //erstellt 2 Variablen
+    GanzeZahl j; //beide vom Typ 'int'
+    return 0;
+}
+\end{lstlisting}
+
+\begin{tabbing}
+allgemein: (\=\textbf{T1} ist der Name eines Datentyoen den es schon gibt)\\
+            \>\textbf{T2} ist der neue Name, den T1 jetzt zusätzlich haben soll
+\end{tabbing}
+\begin{lstlisting}[numbers=none]
+typedef <T1> <T2>
+\end{lstlisting}
+
+\subsection{zusammengesetzte Datentypen umbenennen}
+
+Genau so kann man auch Datentypen, die man selbst erstellt hat, einen neuen Namen geben.
+
+\begin{lstlisting}
+struct Datum {
+    int jahr;
+    int monat;
+    int tag;
+};
+
+//an dem '_t' erkennt man, dass es ein Typname
+typedef struct Datum date_t
+
+int main(void) {
+    /*die Variablen 'heute' und 'morgen'
+      sind vom selben Typ */
+    date_t heute;
+    struct Datum morgen;
+    heute.jahr = 2015;
+    morgen.jahr = 2015;
+    return 0;
+}
+\end{lstlisting}
+
+\end{document}
