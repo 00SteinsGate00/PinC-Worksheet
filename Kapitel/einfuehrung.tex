@@ -24,7 +24,7 @@ Ein Computer hat \textbf{Speicher} und einen \textbf{Prozessor}. Im Speicher kö
 
 Den Speicher kann man sich vorstellen als eine lange Liste von Speicherplätzen, die der Reihe nach nummeriert sind. Anders als gewohnt, fängt die Nummerierung bei \textbf{0} an. \\
 
-\begin{lstlisting}[numbers=none, backgroundcolor=\color{lightgray}]
+\begin{lstlisting}[numbers=none, backgroundcolor=\color{lightgray}, frame=lrtb]
 |Speicherplatz Nr. 0| Speicherplatz Nr. 1|Speicherplatz Nr. 2|...
 \end{lstlisting}
 
@@ -48,7 +48,7 @@ Er kann z.B addieren, subtrahieren, multiplizieren und einiges mehr. Diese grund
 Ein Programm ist einfach nur eine lange Liste von solchen Befehlen, die nacheinander ausgeführt werden. \\
 
 \textit{kleines Beispielprogramm:}
-\begin{lstlisting}
+\begin{lstlisting}[frame=lrtb]
 addiere die Zahlen 5 und 6
 speichere das Ergebnis an Adresse 11
 multipliziere die Zahlen 3 und 7
@@ -63,12 +63,12 @@ Die Aufgabe eines Programmierers ist es, solche Listen von Befehlen zu schreiben
 
 \textit{unterschiedliche Arten das gleiche Programm aufzuschreiben:}
 \begin{multicols}{2}
-\begin{lstlisting}
+\begin{lstlisting}[frame=lrtb]
 adr11 <-- 5 + 6
 adr12 <-- 3 * 7
 adr13 <-- adr11 + adr12
 \end{lstlisting}
-\begin{lstlisting}
+\begin{lstlisting}[frame=lrtb]
 add(5,6)     -> $11
 mult(3,7)    -> $12
 add($11,$12) -> $13

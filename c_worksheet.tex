@@ -10,7 +10,15 @@
 \usepackage[top=50pt,bottom=60pt,left=75pt,right=80pt]{geometry}
 
 \usepackage{subfiles} 
-\usepackage{hyperref} 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black,
+    pdfborder = {0 0 0}
+}
 \usepackage{listings} 
 
 \usepackage{xcolor}
@@ -30,7 +38,8 @@
 	aboveskip=3em,
 	xleftmargin=1cm,
 	showstringspaces=false,
-  frame=lrtb,
+  %frame=lrtb,
+  numberstyle=\color{gray},
   basicstyle =\ttfamily,
 }  
 
