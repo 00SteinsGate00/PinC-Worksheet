@@ -1,0 +1,123 @@
+\documentclass[c_worksheet.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Einstiegsaufgaben}
+
+In diesem Teil gibt es einige eher leichte Übungsaufgabeun zum lockeren Einstieg. Sie sind auch gut zum aufwärmen oder auffrischen geeignet.
+
+
+\section{Hallo Welt!}
+
+Der Klassiker. Schreibe ein Programm, dass auf der Konsole "'Hallo Welt!"' ausgibt.
+
+
+\section{Hallo Welt! zum Quadrat}
+
+Schreibe ein Programm, dass "'Hallo Welt!"'' auf der Konsole \(k\) mal ausgibt. \(k\) soll dabei aus einer \emph{Integer} Variable ausgelesen werden. Probiere verschiedene Werte für \(k\) aus.
+
+
+\section{Eingaben}
+
+Schreibe ein Programm, dass eine ganze Zahl einliest und diese quadriert wieder ausgibt. Dazu kannst du die Funktion \emph{scanf} benutzen.
+
+\begin{lstlisting}
+int k;
+// Danach steht der eingegebene Wert in k
+scanf("%i", &k) 
+\end{lstlisting}
+
+
+\section{Potenzrechnung}
+
+Schreibe ein Programm, dass zwei ganze Zahlen \(b\) und \(e\) einliest und mittels einer \emph{for} Schleife das Ergebnis von \(b^e\) berechnet. Überlege dir hierbei, wie du es hin bekommst, dass \(b\) genau \(e\) mal mit sich selbst multipliziert wird.  
+
+
+\section{Bedingte Funktionen} 
+
+Schau dir folgende mathematische Funktion an.
+
+\begin{align*}
+	f(x) = \begin{cases}
+		x &, x >= 0 \\
+		x-5 &, sonst
+	\end{cases}
+\end{align*}
+
+Lies eine Zahl mit \emph{scanf} ein und benutze eine \emph{if} Bedingung, um diese Funktion umzusetzen. Anschließend gib das Ergebnis mit \emph{printf} aus.
+
+
+\section{Teilbarkeit}
+
+Schreibe ein Programm, dass zwei Variablen \(a\) und \(b\) einliest und überprüft, ob \( \frac{a}{b} \in \mathbb{N} \) gilt (also ob \(a\) durch \(b\) teilbar ist). Du kannst dafür den \emph{modulo} Operator benutzen, versuche es aber auch mal mit einer \emph{while} Schleife.
+
+
+\section{Zahlenfolgen}
+
+Setze folgende Zahlenfolge als Funktion um.
+
+\begin{align*}
+ 	(a_n)_{n \in \mathbb{N} } = \frac{n}{2} + 3n 
+ \end{align*} 
+
+ Dabei soll das Programm eine Zahl \(k\) einlesen und das Folgenglied \( (a_k) \) berechnen und ausgeben. Das Ergebnisse sollte dann etwa so aussehen
+
+\begin{center}
+\textit{0, 3.5, 7, 10.5, 14, 17.5, 21, 24.5, 28, 31.5... } 
+\end{center}
+
+\textbf{Tipp:} Versuche den Teil deines Programms der das folgen Glied berechnet in eine einzelne Funktion auszulagern.
+
+
+\section{Das ganze als Reihe}
+
+Berechnet die Folge diesmal als Reihe, wieder mit einer Eingabe \(k\). Die Reihe summiert einfach nur die einzelnen Folgenglieder auf. Die Ausgabe für \(k = 3\) wäre also \( 21 \).
+
+\begin{align*}
+ 	\sum_{i=0}^k (a_i),    (a_i)_{i \in \mathbb{N} } = \frac{i}{2} + 3i 
+ \end{align*} 
+
+\textbf{Tipp: } Benutze dein Programm aus der Aufgabe davor und bastele eine Schleife drum herum.
+
+
+\section{Knock Knock}
+
+Schreibe eine Funktion die folgende Ausgabe liefert
+
+\begin{center}
+\textit{Knock KNOCK Knock KNOCK ... }
+\end{center}
+
+wobei die Anzahl der "'Knock"' von einer eingelesenen Variable bestimmt wird. Jedes zweite "'Knock"' soll dabei groß geschrieben werden.  
+
+
+\section{Matrix}
+
+Das Programm soll erst einmal 2 Variablen \(k\) und \(l\) einlesen. Nutzt dann eine doppelt geschachtelte \emph{for} Schleife um eine Ausgage nach der folgenden allgemeinen Form auszugeben.
+
+\begin{align*}
+\begin{matrix}
+i / j  & j_1     & ... & j_k       \\
+i_1    & i_1*j_1 & ... & i_1 * j_k \\
+...    & ...     & ... & ...       \\
+i_l    & i_l*j_1 & ... & i_l*j_i   \\
+\end{matrix}
+\end{align*}
+
+Dementsprechend sähe die Ausgabe für \(k=3\) und \(l=4\) also folgendermaßen aus
+
+\begin{align*}
+\begin{matrix}
+i / j & 1 & 2 & 3 &  4 \\
+    1 & 1 & 2 & 3 &  4 \\
+    2 & 2 & 4 & 6 &  8 \\
+    3 & 3 & 6 & 9 & 12 \\
+\end{matrix}
+\end{align*}
+
+Die doppelte \emph{for} Schleife könnte so aussehen. Überlege dir wie diese beiden Schleifen durch die Matrix laufen und wo du z.B. Zeilenumbrüche setzten musst.
+
+\lstinputlisting{CodeSnippets/Einstiegsaufgaben/matrix.c} 
+
+
+\end{document}
