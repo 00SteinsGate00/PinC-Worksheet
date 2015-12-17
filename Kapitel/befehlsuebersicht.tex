@@ -9,9 +9,9 @@
 In \textbf{C} geschriebene Programme haben eine generelle Struktur die es zu beachten gibt. Diese sieht wie folgt aus
 
 \begin{lstlisting}
- int main(){
- 	<Code>
- 	return 0;
+ int main(void) {
+    <Code>
+    return 0;
  }
  \end{lstlisting} 
 
@@ -19,7 +19,7 @@ Die so genannte \emph{main Funktion} ist der Haupteil des Programms. Wird das Pr
 
 \textit{return 0} \\
 
-Dieser Befehl beendet das Programm und die \emph{0} ist dabei eine Konvention, welche fest gelegt wurde. \emph{0} bedeutet hierbei, dass alles in Ordnung war und das Programm korrekt terminiert wurde. Dies wird an das Betriebssystem mitgeteilt. 
+Dieser Befehl beendet das Programm und die gibt den Zahlenwert \emph{0} an das Betriebssystem zurück. \emph{0} bedeutet hierbei, dass alles in Ordnung war und das Programm korrekt bis zum Ende durchgelaufen ist.
 
 
 
@@ -31,13 +31,13 @@ Mit so genannten \emph{includes} kann man anderen Programmcode in sein eigenes P
 #include <<Paketname>>
 \end{lstlisting}
 
-Ein Paket das ganz oft benutzt wird und auch benötigt wird, sobald ihr etwas ausgeben wollt, ist \emph{stdio.h}. Der name steht dabei für Standart Input/Output. Dieses Paket stellt einige nützliche Befehle für die Ein- und Ausgabe.
+Ein Paket das sehr häufig benötigt wird ist \textbf{stdio.h}. Der name steht dabei für Standart Input/Output. Dieses Paket stellt einige nützliche Befehle für die Ein- und Ausgabe bereit.
 
-Die wichtigsten hierbei sind \emph{printf} und \emph{scanf}. Mit ersterem kann man Text ausgeben und mit letzterem Eingaben des Benutzers einlesen.
+Die wichtigsten hierbei sind \textbf{printf} und \textbf{scanf}. Mit ersterem kann Text auf dem Bildschirm dargestellt werden. Und mit letzterem können Eingaben des Benutzers eingelesen werden.
 
 \lstinputlisting{CodeSnippets/Befehlsuebersicht/print.c} 
 
-Dieses Programm gibt auf der Konsole "Hallo Welt!" aus. Ohne den \emph{include} Befehl, wüsste der Compiler nicht was printf eigentlich ist.
+Dieses Programm gibt auf der Konsole ``Hallo Welt!'' aus. Ohne \textbf{\#include <stdio.h>}, wüsste der Compiler nicht was printf ist.
 
 \lstinputlisting{CodeSnippets/Befehlsuebersicht/scan.c}
 
@@ -51,14 +51,14 @@ In Variablen kann man Werte speichern, dafür gibt es verschiedene Typen, unter 
  	\item \textbf{int} - ganze Zahlen
  	\item \textbf{float} - Kommazahlen
  	\item \textbf{double} - Kommazahlen die doppelt so präzise sind (wie \emph{floats})
- 	\item \textbf{char} - Zeichen wie z.B. 'a' oder 'b' 
+ 	\item \textbf{char} - Textzeichen wie `a' oder `b' 
  \end{itemize} 
 
 Es gibt noch viele andere Typen für Variablen.
 
 Variablen werden nach dem folgenden Schema angelegt
 
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 <typ> <name>;
 \end{lstlisting}
 
@@ -118,7 +118,6 @@ Es gibt unter anderem folgende logische Operatoren in \textbf{C}
 \begin{itemize}
 	\item \textbf{\&\&} - logisches Und
 	\item \textbf{||} - logisches Oder
-	\item \textbf{\^}  - exklusives Oder
 	\item \textbf{!}  - Negation
 \end{itemize}
 
@@ -244,7 +243,7 @@ else{
 
 Damit lassen sich Programme basteln, die sich verschieden Verhalten, je nachdem wie die Umstände so sind.
 
-\lstinputlisting{CodeSnippets/Befehlsuebersicht/Bedingungen.c}
+\lstinputlisting{CodeSnippets/Befehlsuebersicht/bedingungen.c}
 
 
 

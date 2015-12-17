@@ -1,13 +1,6 @@
 \documentclass[c_worksheet.tex]{subfiles}
 
 
-
-
-\lstdefinestyle{block}{
-	frame=lrtb,
-	backgroundcolor=\color{lightgray},
-} 
-
 % % listings Optionen
 % \lstset{
 %   language=c,
@@ -31,7 +24,7 @@ Ein Computer hat \textbf{Speicher} und einen \textbf{Prozessor}. Im Speicher kö
 
 Den Speicher kann man sich vorstellen als eine lange Liste von Speicherplätzen, die der Reihe nach nummeriert sind. Anders als gewohnt, fängt die Nummerierung bei \textbf{0} an. \\
 
-\begin{lstlisting}[numbers=none, style=block]
+\begin{lstlisting}[numbers=none, backgroundcolor=\color{lightgray}]
 |Speicherplatz Nr. 0| Speicherplatz Nr. 1|Speicherplatz Nr. 2|...
 \end{lstlisting}
 
@@ -47,6 +40,7 @@ xxx\=xxxxxxxxxxxxxxxxx\=  \kill
 \>1 Gigabyte (gb) \>= 1024 ($2^{10}$) Megabytes\\
 \end{tabbing}
 
+\newpage
 \section{Prozessor}
 
 Der Prozessor ist eine elektrische Schaltung, die so gebaut wurde, dass sie ein paar grundlegende Dinge kann.
@@ -85,7 +79,7 @@ Die vielen unterschiedlichen Arten ein Programm aufzuschreiben nennt man \textbf
 \newpage
 \section{Die Linux Konsole und der C-Compiler}
 
-\section{Linux und die Konsole}
+\subsection{Linux und die Konsole}
 Früher, als Computer noch sehr langsam waren und es weder schicke Fenster noch eine Maus gab, musste man den Computer ausschließlich mit der Tastatur bedienen.
 Die Computer dieser Zeit bestanden aus 3 Teilen: der eigentliche Computer, ein Bildschirm und eine Tastatur.
 Ein Programm, das in dem Coumputer läuft, kann einzelen Textzeichen an den Bildschirm schicken. Dieser stellt das Textzeichen dann dar.
@@ -116,7 +110,7 @@ Gehe aus dem eben angelgten Ordner heraus und rufe den Befehl \textbf{rm testOrd
 Rufe nun \textbf{rm -r testOrdner} auf um den Ordner zu löschen.
 
 \newpage
-\section{Der C-Compiler}
+\subsection{Der C-Compiler}
 
 In Kapitel 1.2 wurde erklärt was ein Compiler ist. Unter Linux gibt es die so genannte \textbf{GCC}. Das steht für \textit{Gnu Compiler Collection} und ist eine Ansammlung von Compilern für viele verschiedene Programmiersprachen. Der wichtigste davon ist der C-Compiler. Wenn man in der Konsole \textbf{gcc} eintippt, ruft das standartmäßig den C-Compiler auf.\\
 
