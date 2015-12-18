@@ -23,13 +23,21 @@
 
 \usepackage{xcolor}
 \usepackage{float}
-\usepackage{lmodern}
 \usepackage{multicol}
 \usepackage{subcaption}
 \usepackage{mathtools} 
 \usepackage{amssymb} 
 
+
 \usepackage{graphicx} 
+
+ % typewriter fonts for code
+ % uncomment one of these
+\usepackage[lighttt]{lmodern}
+%\usepackage{courier}
+%\usepackage[scaled]{beramono}
+%\usepackage{tgcursor}
+
 
 % listings Optionen
 \lstset{
@@ -42,7 +50,9 @@
 	showstringspaces=false,
   %frame=lrtb,
   numberstyle=\color{gray},
+  commentstyle=\color{gray},
   basicstyle =\ttfamily,
+  keywordstyle=\bfseries
 }  
 
 \title{\textbf{Programmieren in C Worksheet}}
@@ -58,6 +68,7 @@
 \subfile{./Kapitel/einfuehrung.tex} 
 \subfile{./Kapitel/befehlsuebersicht.tex}
 \subfile{./Kapitel/pointer.tex} 
+\subfile{./Kapitel/structs.tex}
 \subfile{./Kapitel/einstiegsaufgaben.tex} 
 
 \end{document} 
