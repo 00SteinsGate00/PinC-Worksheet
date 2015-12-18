@@ -15,7 +15,7 @@ In \textbf{C} geschriebene Programme haben eine generelle Struktur die es zu bea
  }
  \end{lstlisting} 
 
-Die so genannte \emph{main Funktion} ist der Haupteil des Programms. Wird das Programm gestartet beginnt es genau am Anfang der \emph{main Funktion}. Gibt es keine \emph{main Funktion} weiß der Computer nicht wo er anfangen soll. \\
+Die so genannte \emph{main Funktion} ist der Hauptteil des Programms. Wird das Programm gestartet beginnt es genau am Anfang der \emph{main Funktion}. Gibt es keine \emph{main Funktion} weiß der Computer nicht wo er anfangen soll. \\
 
 \textit{return 0} \\
 
@@ -31,7 +31,7 @@ Mit so genannten \emph{includes} kann man anderen Programmcode in sein eigenes P
 #include <<Paketname>>
 \end{lstlisting}
 
-Ein Paket das sehr häufig benötigt wird ist \textbf{stdio.h}. Der name steht dabei für Standart Input/Output. Dieses Paket stellt einige nützliche Befehle für die Ein- und Ausgabe bereit.
+Ein Paket das sehr häufig benötigt wird ist \textbf{stdio.h}. Der Name steht dabei für Standard Input/Output. Dieses Paket stellt einige nützliche Befehle für die Ein- und Ausgabe bereit.
 
 Die wichtigsten hierbei sind \textbf{printf} und \textbf{scanf}. Mit ersterem kann Text auf dem Bildschirm dargestellt werden. Und mit letzterem können Eingaben des Benutzers eingelesen werden.
 
@@ -104,7 +104,7 @@ In \textbf{C} gibt es viele verschiedene Arithmetische Operatoren, im folgenden 
  	\item \textbf{\%} - Modulo   
  \end{itemize} 
 
- Diese \emph{arithmethischen Operatoren} können sowohl mit Variablen als auch mit Konstanten genutzt werden.
+ Diese \emph{arithmetischen Operatoren} können sowohl mit Variablen als auch mit Konstanten genutzt werden.
 
  \lstinputlisting{CodeSnippets/Befehlsuebersicht/arithmetik.c} 
 
@@ -256,7 +256,7 @@ for(<Startwert> ; <Abbruchbedingung> ; <Veraenderung>){
 }
 \end{lstlisting}
 
-In den so genannten \emph{Kopf} einer \emph{For-Schleife} schreibt man den Wert, bei dem die Zählvarible beginnen soll, die Bedingung bei der aus der Schleife ausgebrochen werden soll und die Art, wie die \emph{Laufvariable} in jedem \emph{Schleifendurchlauf} verändet werden soll.
+In den so genannten \emph{Kopf} einer \emph{For-Schleife} schreibt man den Wert, bei dem die Zählvariable beginnen soll, die Bedingung bei der aus der Schleife ausgebrochen werden soll und die Art, wie die \emph{Laufvariable} in jedem \emph{Schleifendurchlauf} verändert werden soll.
 
 \lstinputlisting[firstline=1, lastline=9]{CodeSnippets/Befehlsuebersicht/for_schleifen.c} 
 
@@ -325,12 +325,12 @@ Mit dem \emph{Funktionsnamen} kann man die Funktion später aufrufen.
 
 Mit den \emph{Parametern} kann man der Funktion Werte übergeben. Jedem von ihnen wird ein \emph{Typ} und ein \emph{Parametername} zugeordnet. Mit diesem \emph{Parametername} kann man in der Funktion auf diese Variable zugreifen.
 
-Mit dem Befehel \emph{return} beendet man die Funktion und gibt den Wert zurück, den man zusammen mit dem \emph{return} Befehl angibt, zurück.
+Mit dem Befehl \emph{return} beendet man die Funktion und gibt den Wert zurück, den man zusammen mit dem \emph{return} Befehl angibt, zurück.
 
 
 \lstinputlisting[firstline=1, lastline=3]{CodeSnippets/Befehlsuebersicht/funktionen_addition.c} 
 
-Die Funktion hat den namen \"addition\", gibt einen Wert vom Typ \textbf{int} zurück, bekommt 2 Parameter vom Typ \emph{int} mit dem Namen \(a\) und \(b\) und berechnet deren Summe. Diese wird mit dem \emph{return} Befehl zurück gegeben.
+Die Funktion hat den Namen \"addition\", gibt einen Wert vom Typ \textbf{int} zurück, bekommt 2 Parameter vom Typ \emph{int} mit dem Namen \(a\) und \(b\) und berechnet deren Summe. Diese wird mit dem \emph{return} Befehl zurück gegeben.
 
 Die Funktion kann dann ganz einfach in der \emph{main} Funktion aufgerufen werden.
 

@@ -18,7 +18,7 @@
 \chapter{Computer und Programmiersprachen}
 
 Was sind eigentlich Computer und Programmiersprachen? \\
-Ein Computer hat \textbf{Speicher} und einen \textbf{Prozessor}. Im Speicher können Zahlen abgespechert werden und der Prozessor kann rechnen. \\
+Ein Computer hat \textbf{Speicher} und einen \textbf{Prozessor}. Im Speicher können Zahlen abgespeichert werden und der Prozessor kann rechnen. \\
 
 \section{Speicher}
 
@@ -29,7 +29,7 @@ Den Speicher kann man sich vorstellen als eine lange Liste von Speicherplätzen,
 \end{lstlisting}
 
 \vspace{3pt}
-Die Nummer eins Speicherplatztes nenn man die \textbf{Adresse} dieses Speicherplatztes. \\
+Die Nummer eins Speicherplatzes nenn man die \textbf{Adresse} dieses Speicherplatzes. \\
 Ein Speicherplatz ist für gewöhnlich \textbf{1 Byte} (8 Bit) groß und kann deswegen 256 verschiedene Zahlen speichern.
 0000 0000 -> ...  ... -> 1111 1111 (256 verschiedene Zustände) $2^8 = 256$ \\
 
@@ -82,7 +82,7 @@ Die vielen unterschiedlichen Arten ein Programm aufzuschreiben nennt man \textbf
 \subsection{Linux und die Konsole}
 Früher, als Computer noch sehr langsam waren und es weder schicke Fenster noch eine Maus gab, musste man den Computer ausschließlich mit der Tastatur bedienen.
 Die Computer dieser Zeit bestanden aus 3 Teilen: der eigentliche Computer, ein Bildschirm und eine Tastatur.
-Ein Programm, das in dem Coumputer läuft, kann einzelen Textzeichen an den Bildschirm schicken. Dieser stellt das Textzeichen dann dar.
+Ein Programm, das in dem Computer läuft, kann einzelne Textzeichen an den Bildschirm schicken. Dieser stellt das Textzeichen dann dar.
 Wenn man Tasten auf der Tastatur drückt, wird das zugehörige Textzeichen an den Computer gesendet und gleichzeitig auf dem Bildschirm dargestellt.
 Die Einheit von einem Bildschirm und einer Tastatur, die so benutzt werden um einen Computer zu steuern, nennt man \textbf{Terminal} oder \textbf{Konsole}.\\
 
@@ -105,16 +105,16 @@ Jedem dieser Befehle kann man Optionen und Parameter mitgeben, bevor man ihn aus
 Tippe \textbf{mkdir testOrdner} ein und drücke \textit{Enter}. Dadurch wird ein neuer Ordner mit dem Namen \textit{testOrdner} erstellt.\\
 Rufe wieder den Befehl \textbf{ls} auf und überprüfe, ob der Ordner angelegt wurde.\\
 Tippe \textbf{cd testOrdner} ein und drücke \textit{Enter} um in den neuen Ordner hinein zu gehen. Am linken Fensterrand sollte nun zu sehen sein, dass man sich in dem neuen Ordner befindet.\\
-Der Befehl \textbf{cd ..} bring einen wieder zurück in den vorherigen Ordner. (Zwei Punkte meinen immer den Ordner, der in der Ordnerstruktur eine Ebene über dem jetzigen ist.) Der Befehl \textbf{cd} alleine (ohne Optionen und Paramater) lässt einen in den \textit{home-Ordner} zurück gehen, in dem man am Anfang immer startet.\\
-Gehe aus dem eben angelgten Ordner heraus und rufe den Befehl \textbf{rm testOrdner} auf um ihn wieder zu löschen. Die Konsole wird eine Fehlermeldung ausgeben, weil der Befehl \textbf{rm} nur Dateien löschen kann. Mit der zusätzlichen Option \textbf{-r} kann man auch Ordner und alle darin enthaltenen Unterordner und Dateien löschen.\\
+Der Befehl \textbf{cd ..} bring einen wieder zurück in den vorherigen Ordner. (Zwei Punkte meinen immer den Ordner, der in der Ordnerstruktur eine Ebene über dem jetzigen ist.) Der Befehl \textbf{cd} alleine (ohne Optionen und Parameter) lässt einen in den \textit{home-Ordner} zurück gehen, in dem man am Anfang immer startet.\\
+Gehe aus dem eben angelegten Ordner heraus und rufe den Befehl \textbf{rm testOrdner} auf um ihn wieder zu löschen. Die Konsole wird eine Fehlermeldung ausgeben, weil der Befehl \textbf{rm} nur Dateien löschen kann. Mit der zusätzlichen Option \textbf{-r} kann man auch Ordner und alle darin enthaltenen Unterordner und Dateien löschen.\\
 Rufe nun \textbf{rm -r testOrdner} auf um den Ordner zu löschen.
 
 \newpage
 \subsection{Der C-Compiler}
 
-In Kapitel 1.2 wurde erklärt was ein Compiler ist. Unter Linux gibt es die so genannte \textbf{GCC}. Das steht für \textit{Gnu Compiler Collection} und ist eine Ansammlung von Compilern für viele verschiedene Programmiersprachen. Der wichtigste davon ist der C-Compiler. Wenn man in der Konsole \textbf{gcc} eintippt, ruft das standartmäßig den C-Compiler auf.\\
+In Kapitel 1.2 wurde erklärt was ein Compiler ist. Unter Linux gibt es die so genannte \textbf{GCC}. Das steht für \textit{Gnu Compiler Collection} und ist eine Ansammlung von Compilern für viele verschiedene Programmiersprachen. Der wichtigste davon ist der C-Compiler. Wenn man in der Konsole \textbf{gcc} eintippt, ruft das standardmäßig den C-Compiler auf.\\
 
-Öffne nun einen Texteditor (nicht Word oder Exel, sondern einen reinen Texteditor, der keine schicken Formatierungen macht) und tippe den folgenden C-Code ein. (Du kannst erst einmal ignorieren, dass einige Worte fett abgedruckt sind)\\
+Öffne nun einen Texteditor (nicht Word oder Excel, sondern einen reinen Texteditor, der keine schicken Formatierungen macht) und tippe den folgenden C-Code ein. (Du kannst erst einmal ignorieren, dass einige Worte fett abgedruckt sind)\\
 
 \begin{lstlisting}
 #include <stdio.h>
@@ -125,7 +125,7 @@ int main(void) {
 }
 \end{lstlisting}
 
-Speichere diese Datei in einem Odner ab und nenne sie \textbf{Hallo.c} (Tipp: die Tastenkombination \textit{Strg+s} steht in den meisten Texteditoren für abspeichern)\\
+Speichere diese Datei in einem Ordner ab und nenne sie \textbf{Hallo.c} (Tipp: die Tastenkombination \textit{Strg+s} steht in den meisten Texteditoren für abspeichern)\\
 Nutze nun die Konsole und den Befehl \textbf{cd} um in den Ordner zu gehen, in dem die Datei gespeichert wurde. Vergewissere dich mit \textbf{ls}, dass die Datei wirklich da ist.\\
 Rufe den Befehl \textbf{gcc Hallo.c} auf um den C-Compiler zu starten und ihm zu sagen, in welcher Datei Programmcode für ihn liegt.\\
 Rufe noch einmal \textbf{ls} auf. In dem Ordner sollten nun zwei Dateien liegen. \textbf{Hallo.c} und \textbf{a.out}.\\
@@ -135,14 +135,14 @@ Tippe nun \textbf{./a.out} ein und drücke \textit{Enter} um das Programm auszuf
 
 \textit{Hallo! Ich bin ein C-Programm.}\\
 
-Der Compiler nennt die Dateien, die er erzeugt, standartmäßig \textit{a.out}.\\
-Mit der Optionen \textbf{-o} (O wie Output) kann man dem Compiler sagen, welchen Namen er der erzugten Datei geben soll.\\
+Der Compiler nennt die Dateien, die er erzeugt, standardmäßig \textit{a.out}.\\
+Mit der Optionen \textbf{-o} (O wie Output) kann man dem Compiler sagen, welchen Namen er der erzeugten Datei geben soll.\\
 Rufe \textbf{rm a.out} auf um die eben erzeugte Datei zu löschen.\\
 Tippe jetzt \textbf{gcc Hallo.c -o Hallo} ein und drücke \textit{Enter}. Dieser Befehl sagt dem Compiler, dass in der Datei \textbf{Hallo.c} der Programmcode zu finden ist und er eine Datei mit dem Namen \textbf{Hallo} erzeugen soll. Hinter dem \textbf{-o} kann man einen beliebigen Namen angeben.\\
 Das erzeugte Programm kann man nun mit \textbf{./Hallo} ausführen.\\
 
 allgemein:\\
-Programmcode in der Sprache C gehört in eine Textdatei mit der Ednung .c\\
+Programmcode in der Sprache C gehört in eine Textdatei mit der Endung .c\\
 Mit dem Befehl \textbf{gcc} \textit{<Dateiname.c>} \textbf{-o} \textit{<Name der Zieldatei>} kann C-Code zu einem ausführbaren Programm übersetzt werden.\\
 Mit \textbf{./}\textit{<Programmname>} kann man ein Programm ausführen.
 \end{document}
