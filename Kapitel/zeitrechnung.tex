@@ -1,0 +1,83 @@
+\documentclass[c_worksheet.tex]{subfiles}
+
+\begin{document}
+  
+\chapter{Zeitrechnung}
+
+Im echten Leben gibt man Zeitpunkte so ``\textit{15.12.2015}'' oder so ``\textit{Montag der 3. Januar 2016}'' an.
+Damit kann der Computer aber schlecht rechnen. Deswegen speichert man Zeitpunkte so:\\
+
+Man nimmt sich einen festen Zeitpunkt, auf den sich viele Leute einigen können und der sich nie wieder ändern wird. Einen solchen Zeitpunkt nennt man \textbf{Epoche}. Dann zählt man von dieser Epoche an die Anzahl an vergangenen Zeiteinheiten (z.B.: Stunden, Minuten, Sekunden). Im Alltag macht man intuitiv das Gleiche, nutzt aber ständig wechselnde Epochen und unterschiedliche Zeiteinheiten. Das Jahr geben wir an als ``\textit{Anzahl Jahre seit der Geburt von Jesus}''. Den Monat geben wir an als ``\textit{Anzahl Monate seit dem letzten Sylvester}''. Den Tag geben wir an als ``\textit{Anzahl Tage seit dem letzten Monat}''.\\
+Einigt man sich auf eine einzige Epoche und benutzt nur eine einzige Zeiteinheit zum zählen, dann kann man jedes Datum als eine Zahl darstellen. Positive Zahlen für Daten nach der Epoche und negative Zahlen für Daten vor der Epoche. Eine solche Zahl, die ein Datum repräsentiert, nenn man \textbf{Zeitstempel} (eng: timestamp). Der große Vorteil von Zeitstempeln ist, dass der man damit einfach rechnen kann. Um eine Zeitspanne zu bekommen braucht man nur zwei Zeitstempel zu subtrahieren.
+
+\section{Der Unix Timestamp}
+
+\textbf{Unix} war der Name eines Betriebssystems aus den 1960er Jahren, das viele Standarts gesetzt hat. Betriebssysteme wie Linux und Mac OS X, die den Prinzipen von Unix folgen, nennt man desewegen heute noch \textit{unixartige Systeme}. Ein Standart, der seinen Namen Unix verdankt, ist der Unix-Timestamp. Er ist der Timestamp in dem die meisten Systeme Zeitpunkte abspeichern.\\
+\begin{tabbing}
+xxxxxxx\=xxxxxxxx\=xxxxxxxxxxxxxx\= \kill
+\>\textbf{Unix Timestamp:}\\
+\>\>Epoche: \> 01.Januar.1970,  00:00 Uhr\\
+\>\>Zeiteinheit: \>Sekunden
+\end{tabbing}
+
+\vspace{5pt}
+Man zählt also die Anzahl vergangener Sekunden seit dem 01. Januar 1970 um 00:00 Uhr (Zeitzone London). Diesen Zeitstempel könnte man einfach in einer Variable vom Typ \textbf{int} speichern. Da \textbf{int} auf verschiedenen Rechnern aber unterschiedliche Bitbreiten hat verwendet man den Datentyp \textbf{time\_t}. Dieser ist definiert in der Standartbibliothek \textbf{time.h} und verhält sich um Grunde wie \textbf{int} (aber mit ausreichender Bitbreite). In der gleichen Bibliothek gibt es außerdem eine Funktion um den aktuellen timestamp zu bekommen. Die Funktion heißt \textbf{time} und nimmt als Parameter die Speicheradresse einer \textbf{time\_t} Variable. Sie wird den aktuellen timestamp in diese Varuable hineinschreiben und außerdem als Rückgabewert liefern. Wenn man also eine Variable vom Typ \textbf{time\_t} hat, gibt es zwei Möglichkeiten den aktullen timestamp in diese Variable hineinzuschreiben. Entweder man übergibt ihre Adresse (Pointer auf sie) der Funktion \textbf{time}. Oder man ruft die Funktion \textbf{time} mit \textit{NULL} auf und schreibt ihren Rückgabewert in die Variable. Der Nachfolgende Code verdeutlicht beide Möglichkeiten.\\
+
+
+%\newpage
+\begin{lstlisting}
+#include <time.h>
+#include <stdio.h>
+
+int main(void) {
+    //2 Variablen vom Typ 'time_t'
+    time_t jetzt1, jetzt2;
+
+    time(&jetzt1);
+    jetzt2 = time(NULL);
+
+    printf("%ld %ld\n", jetzt1, jetzt2);
+    return 0;
+}
+\end{lstlisting}
+
+In Zeile 11 benutzen wir \textit{\%ld} um den Inhalt einer \textbf{time\_t} Variable auszugeben. Wie bereits erwähnt verhält sich der Datentyp \textbf{time\_t} ähnlich wie \textbf{int} (Speichert ganze Zahlen) mit dem Unterschied, dass er auf macnhen Rechnern mehr Speicherplatz verbraucht (breiter ist) als \textbf{int}. Deswegen stellen wir mit \textit{\%ld} (long decimal) sicher, dass der Wert in der \textbf{time\_t} Variable richtig ausgegeben wird.
+
+\section{Timestamp leserlich machen}
+
+Da ein timestamp für den Menschen schwer leserlich ist will man ihn in Komponenten aufteilen bevor man ihn auf den Bildschirm ausgibt (Jahr, Monat, Tag ...).
+In der Bibliothek \textbf{time.h} gibt es bereits einen zusammengesetzten Datentypen mit dem Namen \textbf{struct tm}. Er besteht aus folgenden Komponenten:
+
+\begin{tabbing}
+xxxxxx\=xxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxx\= \kill
+
+\>\textit{Komponentenname} \>\textit{Typ der Komponente} \>\textit{Beschreibung} \\
+\>\textbf{ tm\_sec}\> \textbf{ int}\> \\
+\>\textbf{ tm\_min}\> \textbf{ int}\> \\
+\>\textbf{ tm\_hour}\> \textbf{ int}\> \\
+\>\textbf{ tm\_mon}\> \textbf{ int}\> \\
+\>\textbf{ tm\_year}\> \textbf{ int}\> \\
+\>\textbf{ tm\_wday}\> \textbf{ int}\> \\
+\>\textbf{ tm\_yday}\> \textbf{ int}\> \\
+\>\textbf{ tm\_isdst}\> \textbf{ int}\> 
+\end{tabbing}
+
+Die Funktion \textbf{localtime} aus der Bibliothek \textbf{time.h} kann einen timestamp aufspalten in die oben genannten Komponenten. Als Parameter nimmt sie die Adresse einer \textbf{time\_t} Variable in der bereits ein timestamp steht. Und als Rückgabewert liefert sie die Adresse einer Variable vom Typ \textbf{struct tm} die von der Funktion angelegt wurde.
+
+\begin{lstlisting}
+#include <time.h>
+
+int main(void) {
+    time_t jetzt;
+    time(&jetzt);
+    //Pointer nach 'struct tm'
+    struct tm *jetzt_alsKomponenten;
+    jetzt_alsKomponenten = localtime(&jetzt);
+    return 0;
+}
+\end{lstlisting}
+
+\section{Beliebiges Datum nach Timestamp}
+
+
+\end{document}

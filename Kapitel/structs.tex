@@ -4,13 +4,13 @@
   
 \chapter{Eigene Datentypen}
 
-\section{Warum will man eigene Datentypen?}
+\section{Zusammengesetze Datentypen erstellen}
 
 Die standart Datentypen wie \textbf{int, float, double, char}... kennen wir schon. Wenn man sich neue Variablen von diesen Typen erstellen möchte schreibt man:
 \begin{lstlisting}
 int i;   //erstellt eine Variable vom Typ int
-char c;  //        .    .    .           float
-float f; //        .    .    .           double
+char c;  //        .    .    .           char
+float f; //        .    .    .           float
 \end{lstlisting}
 
 Wenn man nun Dinge aus der realen Welt in Programmcode repräsentieren möchte, überlegt man sich aus welchen Variablen diese Dinge aufgebaut sind.\\
@@ -104,16 +104,16 @@ struct Datum { // 'struct Datum' besteht aus 3 Komponenten
 };
 
 /*erstellt Datentypen mit Namen 'struct Name'
-  beide Komponenten sind von Typ 'Pointer auf char') */
+  beide Komponenten sind von Typ 'Pointer auf char'  */
 struct Name { 
     char *vorname;   //Speicheradresse an der der Vorname liegt
     char *nachname;  //Speicheradresse an der der Nachname liegt
 };
 
 /*ein Student hat 3 Komponenten
- *Komponente 'name' ist vom Typ 'struct Name'
- *Komponente 'geburtsdatum' ist vom Typ 'struct Datum'
- *Komponente 'matrikelNummer' ist vom Typ 'int' */
+  Komponente 'name' ist vom Typ 'struct Name'
+  Komponente 'geburtsdatum' ist vom Typ 'struct Datum'
+  Komponente 'matrikelNummer' ist vom Typ 'int' */
 struct Student {
     struct Name name;
     struct Datum geburtsdatum; 
@@ -162,7 +162,7 @@ int main(void) {
 \end{lstlisting}
 
 \begin{tabbing}
-allgemein: (\=\textbf{T1} ist der Name eines Datentyoen den es schon gibt)\\
+allgemein: (\=\textbf{T1} ist der Name eines Datentypen den es schon gibt)\\
             \>\textbf{T2} ist der neue Name, den T1 jetzt zusätzlich haben soll
 \end{tabbing}
 \begin{lstlisting}[numbers=none]
@@ -180,8 +180,9 @@ struct Datum {
     int tag;
 };
 
-//an dem '_t' erkennt man, dass es ein Typname
+// 'struct Datum' darf jetzt auch 'date_t' genannt werden
 typedef struct Datum date_t
+// '_t' wird oft benutzt, wenn man Datentypen benennt
 
 int main(void) {
     /*die Variablen 'heute' und 'morgen'
