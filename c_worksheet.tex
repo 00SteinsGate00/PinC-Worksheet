@@ -23,11 +23,18 @@
 
 \usepackage{xcolor}
 \usepackage{float}
-\usepackage{lmodern}
 \usepackage{multicol}
 \usepackage{subcaption}
 \usepackage{mathtools} 
 \usepackage{amssymb} 
+
+ % typewriter fonts for code
+ % uncomment one of these
+\usepackage[lighttt]{lmodern}
+%\usepackage{courier}
+%\usepackage[scaled]{beramono}
+%\usepackage{tgcursor}
+
 
 % listings Optionen
 \lstset{
@@ -42,6 +49,7 @@
   numberstyle=\color{gray},
   commentstyle=\color{gray},
   basicstyle =\ttfamily,
+  keywordstyle=\bfseries
 }  
 
 \title{\textbf{Programmieren in C Worksheet}}
