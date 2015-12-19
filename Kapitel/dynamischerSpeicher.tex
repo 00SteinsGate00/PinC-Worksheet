@@ -1,0 +1,134 @@
+\documentclass[c_worksheet.tex]{subfiles}
+
+\begin{document}
+  
+\chapter{Dynamischer Speicher}
+
+Bisher haben wir uns Speicherplatz immer nur in Form von Variablen angelegt. Wenn wir Speicherplatz für einen Integer und zwei floats gebraucht haben, konnte wir einfach das schreiben:
+\begin{lstlisting}[numbers=none]
+int i;
+float a, b;
+\end{lstlisting}
+
+Wenn man aber viel Speicherplatz braucht und zu dem Zeitpunkt, an dem man programmiert, noch nicht weiß, wie viel es wird (z.B.: der Programmierer kann nicht wissen wie groß eine Datei wird, die sein Programm später einmal verarbeiten soll), dann braucht man etwas Anderes. Sich während der Ausführung des Programms neuen Speicherplatz zu besorgen kann man sich so vorstellen:
+\begin{tabbing}
+xxxxx\=xxxxxxxxxxxxxxxx\= \kill
+\>\textit{Programm:}\>Hey Betriebssystem, ich brauch nochmal 5 Bytes Speicherplatz! \\
+\>\textit{Betriebsystem:}\>Na gut, ich habe dir 5 Bytes reserviert. Hier ist die Adresse des Ersten.\\
+\>\>Aber pass bloß auf, dass du nicht auf die Speicherplätze davor und dahinter zugreifst.\\
+\>\>Die gehören nämlich anderen Programmen.
+\end{tabbing}
+
+Sich auf diese Weise Speicherplatz zu besorgen nennt man ``\textit{sich Speicherplatz allokieren}''.\\
+Wenn man ein Stück Speicher nicht mehr braucht, kann es wieder freigegeben werden:
+\begin{tabbing}
+xxxxx\=xxxxxxxxxxxxxxxx\= \kill
+\>\textit{Programm:}\>Hey Betriebssystem, diese 5 Bytes von eben brauch ich nicht mehr! \\
+\>\textit{Betriebsystem:}\>Danke, dann kann ich diese Speicherplätze ja jetzt anderen Programmen geben.\\
+\>\>Du solltest auf diese Adressen jetzt nicht mehr zugreifen!
+\end{tabbing}
+
+\vspace{5pt}
+Die C-Standard Bibliothek hat genau dafür einge Funktionen in \textbf{stdlib.h}.\\
+\begin{center}
+\textbf{malloc}, \textbf{free}, \textbf{realloc}, \textbf{calloc}
+\end{center}
+
+\section{Speicher allokieren}
+
+\subsection{malloc}
+Die Funktion \textbf{malloc} nimmt als Parameter die Anzahl Bytes, die man sich allokieren möchte. Als Rückgabewert liefert sie die Adresse des ersten dieser neu allokierten Bytes.
+
+\begin{lstlisting}
+#include <stdlib.h>
+
+int main(void) {
+    int *ptr;
+    ptr = malloc(16);
+}
+\end{lstlisting}
+Im obigen Programm zeigt \textit{ptr} zu einer Adresse von der an 16 Bytes für unser Programm resrviert sind. Für den Fall dass ein Integer 4 Bytes groß ist, können wir diese 16 Bytes benutzen wie einen Array von 4 Integern. Auf die Elemente können wir mit \lstinline$ptr[0] ... ptr[3]$ zugreifen.\\
+
+Da wir aber nicht immer wissen wie groß ein einzelner Integer wirklich ist schreibt man lieber:
+\begin{lstlisting}[numbers=none]
+ptr = malloc(4 * sizeof(int));
+\end{lstlisting}
+Das gleiche funktioniert auch mit eigenen Datentypen:
+\begin{lstlisting}
+#include <stdlib.h>
+
+struct tupel {
+    int a, b;
+};
+
+int main(void) {
+    struct tupel *ptr;
+
+    /* ptr soll zu einem Array von 5 Elementen zeigen */
+    ptr = malloc(5 * sizeof(struct tupel));
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{calloc}
+
+Speicherplatz, der mit \textbf{malloc} reserviert wurde ist nicht initialisiert. Dort können beliebige Werte stehen, die von anderen Programmen dort liegen gelassen worden. Wenn man Speicherplatz reservieren möchte, der initialisiert sein soll, kann man die Funktion \textbf{calloc} benutzen. Sie funktioniert genauso wie \textbf{malloc}, mit dem Unterschied, dass die von ihr reservierten Speicherplätze alle mit 0 initialisiert sind.
+
+\begin{lstlisting}
+#include <stdlib.h>
+
+int main(void) {
+    int *ptr;
+    ptr = calloc(3 * sizeof(int));
+    /* sollte alles 0 sein */
+    printf("%d, %d, %d\n"ptr[0], ptr[1], ptr[2]);
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{realloc}
+
+Die Funktion \textbf{realloc} nimmt zwei Paramter. Als erstes die Adresse eines Stück Speichers, dass man zuvor allokiert hat, und als zweites eine Zahl die angibt, wie groß das Stück Speicher werden soll. Wenn man sich z.B. 5 Bytes allokiert hat, kann man diese mit der Funktion \textbf{realloc} auf mehr Speicher erweitern, oder reduzieren. Wenn direkt hinter den zuvor allokieren Bytes kein Speicherplatz mehr frei ist, werden diese durch \textbf{realloc} an eine Stelle verschoben, an der genug Platz ist. Als Rückgabewert liefert die Funktinen die Adresse des ersten Elemts. Falls die Funktion den Speicher verschieben musste wird der Rückgabewert ein anderer sein, als der übergeben Parameter.
+
+\begin{lstlisting}
+#include <stdlib.h>
+
+int main(void) {
+    /*ptr zeigt an eine Stelle, an der Platz fuer 
+      5 ints reserviert ist */
+    int *ptr = malloc(sizeof(int) * 5);
+
+    /*5 ints mit Werten fuellen */
+    ptr[0] = 1; ptr[1] = 2; ptr[2] = 3;
+    ptr[3] = 4; ptr[4] = 5;
+
+    /*ptr zeigt jetzt an eine Stelle, an der Platz fuer
+      6 ints reserviert ist
+      Die Werte an den ersten 5 Stellen
+      sind gleich geblieben */
+    ptr = realloc (ptr, sizeof(int) * 6);
+    return 0;
+}
+\end{lstlisting}
+
+\section{Speicher deallokieren}
+
+Die Funktion \textbf{free} nimmt die erste Adresse eines Stück Speichers, das vorher mit \textbf{malloc}, \textbf{calloc} oder \textbf{realloc} reserviert wurde. Diese Speicherplätze werden dann freigegeben und sollten nicht mehr benutzt werden.
+
+\begin{lstlisting}
+#include <stdlib.h>
+
+int main(void) {
+    int *ptr;
+    ptr = malloc(16 * sizeof(int));
+    /*hier darf man auf Elemente von ptr zugreifen*/
+    ptr[5] = 6;
+
+    /*ab hier nicht mehr*/
+    free(ptr);
+    return 0;
+}
+\end{lstlisting}
+
+
+\end{document}
