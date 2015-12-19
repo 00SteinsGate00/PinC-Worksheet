@@ -2,7 +2,7 @@ int addition(int a, int b){
 	return a + b;
 }
 
-int main(){
+int main(void){
 	int ergebnis, x, y;
 	x = 5;
 	y = 10;

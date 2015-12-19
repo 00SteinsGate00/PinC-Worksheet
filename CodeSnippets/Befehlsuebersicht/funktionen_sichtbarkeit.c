@@ -4,7 +4,7 @@ void dummy(int x){
 	int y = x;
 }
 
-int main(){
+int main(void){
 	int y = 7;
 
 	// Funktionsaufruf

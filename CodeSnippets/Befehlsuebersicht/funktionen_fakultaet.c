@@ -14,7 +14,7 @@ int fak(int n){
 	return fakultaet;
 }
 
-int main()
+int main(void)
 {
 	// berechnet die Fakultaet von 10
 	int f = fak(5);
