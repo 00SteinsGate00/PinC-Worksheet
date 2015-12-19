@@ -52,17 +52,23 @@ In der Bibliothek \textbf{time.h} gibt es bereits einen zusammengesetzten Datent
 xxxxxx\=xxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxx\= \kill
 
 \>\textit{Komponentenname} \>\textit{Typ der Komponente} \>\textit{Beschreibung} \\
-\>\textbf{ tm\_sec}\> \textbf{ int}\> \\
-\>\textbf{ tm\_min}\> \textbf{ int}\> \\
-\>\textbf{ tm\_hour}\> \textbf{ int}\> \\
-\>\textbf{ tm\_mon}\> \textbf{ int}\> \\
-\>\textbf{ tm\_year}\> \textbf{ int}\> \\
-\>\textbf{ tm\_wday}\> \textbf{ int}\> \\
-\>\textbf{ tm\_yday}\> \textbf{ int}\> \\
-\>\textbf{ tm\_isdst}\> \textbf{ int}\> 
+\>\textbf{ tm\_sec}\> \textbf{ int}\> Sekunde in der Minute(0-61) \footnotemark \\
+\>\textbf{ tm\_min}\> \textbf{ int}\> Minuten in der Stunde(0-59)\\
+\>\textbf{ tm\_hour}\> \textbf{ int}\> Stunden am Tag (0-23)\\
+\>\textbf{ tm\_mday}\> \textbf{ int}\> Tag des Monats(1-31)\\
+\>\textbf{ tm\_mon}\> \textbf{ int}\> Monate seit Januar (0-11)\\
+\>\textbf{ tm\_year}\> \textbf{ int}\> Jahre seit 1900\\
+\>\textbf{ tm\_wday}\> \textbf{ int}\> Wochentag (0-6)\\
+\>\textbf{ tm\_yday}\> \textbf{ int}\> Tage seit dem 01.01 (0-365)\\
+\>\textbf{ tm\_isdst}\> \textbf{ int}\> isdst = ``\textit{is dalight saving time?}''\footnotemark
 \end{tabbing}
 
-Die Funktion \textbf{localtime} aus der Bibliothek \textbf{time.h} kann einen timestamp aufspalten in die oben genannten Komponenten. Als Parameter nimmt sie die Adresse einer \textbf{time\_t} Variable in der bereits ein timestamp steht. Und als Rückgabewert liefert sie die Adresse einer Variable vom Typ \textbf{struct tm} die von der Funktion angelegt wurde.
+\addtocounter{footnote}{-2}
+\stepcounter{footnote}\footnotetext{eigentlich 0-59 aber wegen Schaltsekunden kann hier schonmal 60 oder 61 stehen}
+
+\stepcounter{footnote}\footnotetext{größer 0 falls daylight saving time benutzt wird, 0 falls nicht, und kleiner falls es keine Information dazu gibt}
+
+Die Funktion \textbf{localtime} aus der Bibliothek \textbf{time.h} kann einen timestamp aufspalten in die oben genannten Komponenten. Als Parameter nimmt sie die Adresse einer \textbf{time\_t} Variable in der bereits ein timestamp steht. Und als Rückgabewert liefert sie die Adresse einer Variable vom Typ \textbf{struct tm}, die von der Funktion angelegt wurde.
 
 \begin{lstlisting}
 #include <time.h>
@@ -78,6 +84,42 @@ int main(void) {
 \end{lstlisting}
 
 \section{Beliebiges Datum nach Timestamp}
+
+Andersherum kann man auch die einzelnen Komponenten eines Datums zu einem timestamp zusammensetzen lassen. Dafür gibt es die Funktion \textbf{mktime} aus der Bibliothek \textbf{time.h}. Als Parameter nimmt diese Funktion die Adresse eines \textbf{struct tm}, in dessen Komponenten man ein Datum hingeschrieben hat. Als Rückgabewert liefert sie eine Variable vom Typ \textbf{time\_t}. Dafür müssen nicht alle Komponenten des \textbf{struct tm} aufgefüllt sein.\\
+
+Komponenten die mit Werten gefüllt sein müssen:
+
+\begin{tabbing}
+xxxxxxx\= \kill
+\>\textbf{tm\_sec}\\
+\>\textbf{tm\_min}\\
+\>\textbf{tm\_hour}\\
+\>\textbf{tm\_mday}\\
+\>\textbf{tm\_mon}\\
+\>\textbf{tm\_year}
+\end{tabbing}
+
+Die anderen Komponenten werden von \textbf{mktime} gefüllt werden.
+
+\begin{lstlisting}
+#include <time.h>
+#include <stdio.h>
+
+int main(void) {
+    struct tm t;
+    t.tm_year = 2015 - 1900;
+    t.tm_mon = 11;
+    t.tm_mday = 13;
+    t.hour = 0;
+    t.tm_min = 0;
+    t.tm_sec = 0;
+
+    time_t timestamp;
+    timestamp = mktime(&t);
+    printf("%ld\n", timestamp);
+    return 0;
+}
+\end{lstlisting}
 
 
 \end{document}
