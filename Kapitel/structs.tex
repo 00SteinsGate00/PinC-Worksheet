@@ -195,4 +195,91 @@ int main(void) {
 }
 \end{lstlisting}
 
+\section{Pointer auf eigene Datentypen}
+
+Wie man auf Komponenten von selbst erstellten Datentypen zugreift haben wir eben schon gesehen. Wenn man aber nicht das Obejkt, sondern nur einen Pointer auf das Objekt hat geht das nicht.
+
+\begin{lstlisting}[numbers=none]
+date_t d;
+d.jahr = 2015;
+d.monat = 12;
+d.tag = 15;
+
+/* p ist vom Typ Pointer auf date_t */
+date_t *p;
+
+/* p soll auf d zeigen */
+p = &d;
+\end{lstlisting}
+
+Um über die den Pointer \textit{p} auf die Komponenten zufreigen zu können, muss man ihn erst dereferenzieren (denn in der Variable \textit{p} steht nur die Adresse). Das dereferenzieren mit dem \textit{*}-Operator schreibt man am besten in Klammern und greift danach mit \textbf{.} auf die Komponenten zu.
+
+\begin{lstlisting}[numbers=none]
+if ( d.jahr == (*p).jahr ) {
+    printf("alles ok\n");
+} else {
+    printf("ups, p scheint nicht auf d zu zeigen\n");
+}
+\end{lstlisting}
+
+Statt \lstinline$(*p).jahr$ darf man auch \lstinline$p->jahr$ schreiben.\\
+
+Ein Beispiel wie man mit \textbf{structs}, Pointer und Funktionen arbeiten kann:
+
+\begin{lstlisting}
+#include <stdio.h>
+
+struct Datum {
+    int jahr;
+    int monat;
+    int tag;
+};
+
+typedef struct Datum datum_t;
+
+struct Student {
+    date_t geburtsdatum;
+};
+
+typedef struct Student student_t;
+
+/* diese Funktion vergleicht 2 Studenten anhand ihres Alters
+ * sie gibt 0 zurueck wenn beide gleich alt sind
+ * 1 falls der erste aelter ist
+ * und -1 falls der zweite aelter ist */
+int compare(student_t *s1, student_t *s2) {
+    if (s1->jahr < s2->jahr) return 1;
+    if (s2->jahr < s1->jahr) return -1;
+    
+    if (s1->monat < s2->monat) return 1;
+    if (s2->monat < s1->monat) return -1;
+
+    if (s1->tag < s2.tag) return 1;
+    if (s2->tag < s1.tag) return -1;
+
+    return 0;
+}
+
+int main(void) {
+    student_t Max, Floh;
+    Max.geburtsdatum.jahr = 1993;
+    Max.geburtsdatum.monat = 6;
+    Max.geburtsdatum.tag = 16;
+    Floh.geburtsdatum.jahr = 1993;
+    Floh.geburtsdatum.monat = 7;
+    Floh.geburtsdatum.tag = 2;
+
+    int result = compare(&Max, &Floh);
+
+    if(result > 0) {
+        printf("Max ist aelter\n");
+    } else if (result < 0) {
+        printf("Floh ist aelter\n");
+    } else {
+        printf("Beide sind gleich alt\n");
+    }
+    return 0;
+}
+\end{lstlisting}
+
 \end{document}
