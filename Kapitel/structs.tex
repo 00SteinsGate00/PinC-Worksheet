@@ -282,4 +282,41 @@ int main(void) {
 }
 \end{lstlisting}
 
+\section{Enums}
+
+Ein \textbf{enum} ist ein Datentyp dessen Instanzen sich in unterschiedlichen Zuständen befinden können. Diese Zustände kann man selbst definieren.
+
+\begin{lstlisting}
+enum Wochentag {
+    MO,
+    DI,
+    MI,
+    DO,
+    FR,
+    SA,
+    SO
+};
+
+int main(void) {
+    /*erstellt eine Variable vom Typ 'enum Wochentag' mit Namen 'heute'*/
+    enum Wochentag heute;
+
+    /* 'heute' kann sich in den Zustaenden MO, DI, MI, DO,
+       FR, SO oder SO befinden */
+
+    heute = MO; // so weist man den Wert zu
+
+    enum Wochentag morgen = DI;
+    /* Zuweisungen funktionieren genauso wie bei anderen Variablen */
+    morgen = heute;
+    return 0;
+}
+\end{lstlisting}
+
+Enums können auch mit \textbf{typedef} umbenannt werden.
+
+\begin{lstlisting}[numbers=none]
+typedef enum Wochentag wtage_t;
+\end{lstlisting}
+
 \end{document}
