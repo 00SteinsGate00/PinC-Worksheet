@@ -1,0 +1,44 @@
+\documentclass[c_worksheet.tex]{subfiles}
+
+
+\begin{document}
+
+
+\chapter{Funktionen}
+
+Manchmal hat man ein Stück Code geschrieben und möchte es an mehreren Stellen verwenden. Dann kann man das ganze natürlich mehrfach schreiben, aber sinnvoller ist es eine Funktion zu verwenden. Eine Funktion wird wie folgt definiert
+
+\begin{lstlisting}[language=c]
+<Rueckgabetyp> <name>(<Typ> <p1Name>, .. , <Typ> <pnName>){
+	<FunktionsCode>
+}
+\end{lstlisting}
+
+Der \emph{Rückgabetyp} bezeichnet dabei den Typ des Wertes, den die Funktion am Ende zurück gibt. Also so etwas wie \emph{int}, \emph{float} oder auch \emph{char}. Möchte man nichts zurück geben, ist der \emph{Rückgabetyp} \textbf{void}.
+
+Mit dem \emph{Funktionsnamen} kann man die Funktion später aufrufen.
+
+Mit den \emph{Parametern} kann man der Funktion Werte übergeben. Jedem von ihnen wird ein \emph{Typ} und ein \emph{Parametername} zugeordnet. Mit diesem \emph{Parametername} kann man in der Funktion auf diese Variable zugreifen.
+
+Mit dem Befehl \emph{return} beendet man die Funktion und gibt den Wert zurück, den man zusammen mit dem \emph{return} Befehl angibt, zurück.
+
+
+\lstinputlisting[firstline=1, lastline=3]{CodeSnippets/Funktionen/funktionen_addition.c} 
+
+Die Funktion hat den namen ``addition'', gibt einen Wert vom Typ \textbf{int} zurück, bekommt 2 Parameter vom Typ \emph{int} mit dem Namen \(a\) und \(b\) und berechnet deren Summe. Diese wird mit dem \emph{return} Befehl zurück gegeben.\\
+Die Funktion kann dann ganz einfach in der \emph{main} Funktion aufgerufen werden.
+
+\lstinputlisting[firstline=5, lastline=21]{CodeSnippets/Funktionen/funktionen_addition.c} 
+
+Mit den \emph{Parameternamen} kann innerhalb der Funktion auf diese zugegriffen werden. Wichtig dabei ist, dass diese Parameter nur in der Funktion selbst sichtbar (das heißt benutzbar) sind.
+
+Alle Variablen die innerhalb einer Funktion \emph{initialisiert} werden, sind nur dort sichtbar und verwendbar. Es kann durchaus mehrere Variablen mit gleichem Namen geben.
+
+\lstinputlisting{CodeSnippets/Funktionen/funktionen_sichtbarkeit.c} 
+
+Funktionen können beliebig komplex werden. Folgende Funktion berechnet zum Beispiel die Fakultät einer Zahl.
+
+\lstinputlisting{CodeSnippets/Funktionen/funktionen_fakultaet.c} 
+
+
+\end{document}
