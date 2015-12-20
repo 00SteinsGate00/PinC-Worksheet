@@ -99,7 +99,7 @@ Mit einer \emph{for Schleife} kann man also sehr einfach und elegant über ein \
 
 Ein \emph{Array} als Funktionsparameter zu übergeben ist nicht ganz so einfach wie bei einer gewöhnlichen Variable. Es gibt dazu prinzipiell 3 Methoden, wovon zwei sich aber sehr ähnlich sind.
 
-\subsection{Paramter als Array} 
+\subsection{Array als Parameter} 
 
 Man kann einmal als Paramter wirklich direkt die Arraysyntax angeben. Das geht einmal mit Länge und einmal ohne Länge. Gibt man das ganze mit Länge an, kann man wirklich nur \emph{Arrays} mit dieser Länge der \emph{Funktion} übergeben. Das ist eine starke Einschränkung und sollte meist vermieden werden.
 
@@ -109,7 +109,7 @@ Das ganze ginge natürlich auch mit der Funktionssignatur \lstinline$ int sum(in
  
 \lstinputlisting{CodeSnippets/Arrays/array_function_parameter2.c}
 
-\subsection{Paramter als Pointer}
+\subsection{Pointer als Parameter}
 
 Die andere Methode ist über \emph{Pointer}. Wie am Anfang besprochen, ist ein \emph{Array} nichts anderes als ein \emph{Pointer} auf das erste Element des Arrays. Also kann man als Parameter in der Funktion einfach einen \emph{Pointer} des entsprechenden \emph{Datentyps} angeben.
 
