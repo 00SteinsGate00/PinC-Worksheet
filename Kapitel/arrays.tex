@@ -115,5 +115,26 @@ Die andere Methode ist über \emph{Pointer}. Wie am Anfang besprochen, ist ein \
 
 \lstinputlisting{CodeSnippets/Arrays/array_function_parameter_pointer.c} 
 
+\section{Strings}
+
+Einen \textbf{char} Array nennt man auch String (Zeichenkette). Das ist die gängige Art Text abzuspeichern. Damit man sich nicht zu jedem String seine Länge speichern muss, platziert man am Ende oft ein Zeichen, das sagt ``\textit{Hier ist Ende!}''. Dazu benutzt man die 0. Wenn man mit \textbf{printf} und \textbf{\%s} einen String ausgeben möchte, dann wird die Funktion so lange Zeichen für Zeichen ausgeben, bis sie eine 0 findet.
+
+\begin{lstlisting}
+#include <stdio.h>
+
+int main(void) {
+    char *txt1 = {'H','a','l','l','o',0};
+
+    //ist das gleiche wie
+    char *txt2 = "Hallo";
+
+    /*beide enden auf 0 und
+      koennen mit %s
+      ausgegeben werden */
+    printf("[%s] [%s]\n"txt1,txt2);
+    return 0;
+}
+\end{lstlisting} 
+
 
 \end{document}

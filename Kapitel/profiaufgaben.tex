@@ -52,7 +52,22 @@ Der Bubblesort Algorithmus schaut sich immer zwei benachbarte Elemente an und ve
 \begin{itemize}
   \item Schreibe eine Funktion die einmal über ein Array läuft und dabei immer zwei benachbarte Elemente miteinander vergleicht. Wenn die beiden Elemente falsch herum stehen, sollen sie vertauscht werden.
   \item Benutze die erste Funktion um ein Array zu sortieren. (Überlege dir wie oft die erste Funktion aufgerufen werden muss)
+  \item Bubblesort lässt sich auch auf Double Linked Lists anwenden. Schreibe eine Funktion die eine Double Linked List sortiert.
 \end{itemize}
+
+\section{Blocksatz}
+
+Die Aufgabe ist es eine lange Zeichenkette in Blocksatz auf der Konsole auszugeben. Das heißt jede Zeile soll gleich breit sein. Schreibe als erstes eine Funktion, die einen gegebenen Text in Zeilen aufspaltet. Der Text darf nur bei Leerzeichen auseinander gerissen werden um Zeilen zu bilden. Eine Zeile darf maximal so lang sein, wie die vorher festgelegte Textbreite. Viele Zeilen werden danach zu kurz sein. Schreibe eine Funktion, die eine Zeile nimmt und sie duch einfügen von Leerzeichen auf die richtige Länge bringt. Danach kann der Text Zeile für Zeile ausgegeben werden.\\
+
+Normalerweise würde man den Text erst aus einer Datei einlesen. Hier gehen wir davon aus, dass er wie folgt gegeben ist:
+\begin{lstlisting}[numbers=none]
+char *inputText = "Ich bin ein Text. Und ich bin viel zu " \
+        "lang um an einem Stueck auf der Konsole ausgegeben" \
+        " zu werden. Fuer die Uebung sollte man mich " \
+        "duch einen noch laengeren Text aus dem Internet" \
+        " ersetzen.";
+\end{lstlisting}
+Das ist ein einziger String, der durch eine Null beendet wird.
 
 
 \end{document}
