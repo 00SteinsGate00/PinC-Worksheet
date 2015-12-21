@@ -6,7 +6,7 @@
 
 \section{Programmstruktur}
 
-In \textbf{C} geschriebene Programme haben eine generelle Struktur die es zu beachten gibt. Diese sieht wie folgt aus
+In C geschriebene Programme haben eine generelle Struktur die es zu beachten gibt. Diese sieht wie folgt aus
 
 \begin{lstlisting}
  int main(void) {
@@ -17,7 +17,7 @@ In \textbf{C} geschriebene Programme haben eine generelle Struktur die es zu bea
 
 Die so genannte \emph{main Funktion} ist der Hauptteil des Programms. Wird das Programm gestartet beginnt es genau am Anfang der \emph{main Funktion}. Gibt es keine \emph{main Funktion} weiß der Computer nicht wo er anfangen soll. \\
 
-\textit{return 0} \\
+\textit{return 0;} \\
 
 Dieser Befehl beendet das Programm und die gibt den Zahlenwert \emph{0} an das Betriebssystem zurück. \emph{0} bedeutet hierbei, dass alles in Ordnung war und das Programm korrekt bis zum Ende durchgelaufen ist.
 
@@ -27,12 +27,11 @@ Dieser Befehl beendet das Programm und die gibt den Zahlenwert \emph{0} an das B
 
 Mit so genannten \emph{includes} kann man anderen Programmcode in sein eigenes Programm einbinden.
 
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 #include <<Paketname>>
 \end{lstlisting}
 
 Ein Paket das sehr häufig benötigt wird ist \textbf{stdio.h}. Der Name steht dabei für Standard Input/Output. Dieses Paket stellt einige nützliche Befehle für die Ein- und Ausgabe bereit.
-
 Die wichtigsten hierbei sind \textbf{printf} und \textbf{scanf}. Mit ersterem kann Text auf dem Bildschirm dargestellt werden. Und mit letzterem können Eingaben des Benutzers eingelesen werden.
 
 \lstinputlisting{CodeSnippets/Befehlsuebersicht/print.c} 
@@ -74,7 +73,7 @@ $\Rightarrow$ \=steht eine Variable links von ``='', wird ein neuer Wert in sie 
 
 \subsection{Variablen mit printf ausgeben} 
 
-Möchte man Variablen mit printf ausgeben, muss dabei beachten, von welchem Typ diese ist. Ein kleines Beispiel verdeutlicht dies.
+Möchte man Variablen mit printf ausgeben, muss man dabei beachten, von welchem Typ diese ist. Ein kleines Beispiel verdeutlicht dies.
 
 \lstinputlisting{CodeSnippets/Befehlsuebersicht/print_int.c}
 
@@ -94,7 +93,7 @@ Für scanf gilt das genau so.
 
 \section{Arithmetik}
 
-In \textbf{C} gibt es viele verschiedene Arithmetische Operatoren, im folgenden einige wichtige
+In C gibt es viele verschiedene Arithmetische Operatoren, im folgenden einige wichtige
 
 \begin{itemize}
  	\item \textbf{\(+\)} - Addition
@@ -108,7 +107,7 @@ In \textbf{C} gibt es viele verschiedene Arithmetische Operatoren, im folgenden 
 
  \lstinputlisting{CodeSnippets/Befehlsuebersicht/arithmetik.c} 
 
-Um das programmieren etwas zu erleichtern gibt es folgende Abkürzungen.
+Um das Programmieren etwas zu erleichtern gibt es folgende Abkürzungen.
 
 \lstinputlisting{CodeSnippets/Befehlsuebersicht/arithmetik_abkuerzungen.c} 
 
@@ -117,9 +116,9 @@ Um das programmieren etwas zu erleichtern gibt es folgende Abkürzungen.
 \section{Logische Operatoren} 
 
 
-Logische Operatoren unterscheiden sich ein wenig von den arithmetischen, die man sonst so kennt. Formeln mit logischen Operatoren evaluieren immer auf einen so genannten \emph{Wahrheitswert}: \textbf{true} oder \textbf{false}. Diese \emph{keywords} gibt es in \textbf{C} aber leider nicht. In \textbf{C} bedeutet die Zahl \(0\) \textbf{true} und alles andere bedeutet \textbf{false}.
+Logische Operatoren unterscheiden sich ein wenig von den arithmetischen, die man sonst so kennt. Formeln mit logischen Operatoren evaluieren immer auf einen so genannten \emph{Wahrheitswert}: \textbf{true} oder \textbf{false}. Diese \emph{keywords} gibt es in C aber leider nicht. In C bedeutet die Zahl \(0\) \textbf{true} und alles andere bedeutet \textbf{false}.
 
-Es gibt unter anderem folgende logische Operatoren in \textbf{C}
+Es gibt unter anderem folgende logische Operatoren in C
 
 \begin{itemize}
 	\item \textbf{\&\&} - logisches Und
@@ -194,8 +193,8 @@ Viele Programme sollen ja nicht immer gleich ablaufen, und sich verschieden verh
 
 Dafür gibt es den \emph{if} Befehle, oder auch den \emph{if else} Befehl. Mit diesem können so genannte \emph{bedingte Sprünge} gemacht werden. Die Synthax sieht wie folgt aus
 
-\begin{lstlisting}[language=c]
-if(<Bedingung>){
+\begin{lstlisting}[numbers=none]
+if(<Bedingung>) {
 	<Code>
 }
 \end{lstlisting}
@@ -223,7 +222,7 @@ Ungültige Bedingungen.
 
 Es gibt noch eine so genannte \emph{else} Bedingung, die genau dann ausgeführt wird, wenn die Bedingung in dem \emph{if} Befehl falsch ist.
 
-\begin{lstlisting}[language=c]
+\begin{lstlisting}[numbers=none]
 if(<Bedingung>){
 	<Code der ausgefuehrt wird wenn die Bedingung stimmt>
 }
@@ -244,14 +243,14 @@ Manchmal möchte man, dass ein Stück Code mehrfach ausgeführt wird. Geht es nu
 
 Die Bedingungen werden dabei exakt wie bei dem \emph{if} Befehl aufgestellt.
 
-Für solche Fälle gibt es so genannte \emph{Schleifen}. \textbf{C} bietet drei verschiedene.
+Für solche Fälle gibt es so genannte \emph{Schleifen}. C bietet drei verschiedene.
 
 \subsection{For-Schleife}
 
 Die \emph{For-Schleife} verwendet man, wenn man ein Stück Code eine feste Anzahl oft ausführen möchte. Die Anzahl kann dabei variable sein, jedoch fest. \emph{For-Schleifen} nutzen so genannte \emph{Laufvariablen} mit denen man von einem \emph{Startwert} bis zu einem \emph{Endwert} läuft.
 
-\begin{lstlisting}[language=c]
-for(<Startwert> ; <Abbruchbedingung> ; <Veraenderung>){
+\begin{lstlisting}[numbers=none]
+for(<Startwert> ; <Abbruchbedingung> ; <Veraenderung>) {
 	<Code der mehrfach ausgefuehrt werden soll>
 }
 \end{lstlisting}
