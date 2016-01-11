@@ -1,6 +1,7 @@
 int k = 523;
 // Beide Pointer auf die Addresse von k setzten
-int* ptr1, ptr2 = &k;
+int* ptr1 = &k;
+int* ptr2 = &k;
 
 // Den Wert auf den ptr1 zeigt um 1 erhoehen
 *ptr1++;
