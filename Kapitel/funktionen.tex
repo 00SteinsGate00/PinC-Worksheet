@@ -118,4 +118,44 @@ Auch die GaußSumme lässt sich rekursiv berechnen. Man beachte, dass der rekurs
 
 
 
+\section{Variadische Funktionen}
+
+Eine \emph{variadische Funktion} ist eine Funktion, mit unbestimmter Parameter Anzahl. Das heißt bei der Definition wird nicht angegeben, wie viele Parameter diese Funktion annimmt.
+
+Das kann hilfreich sein, wenn man z.B. eine Funktion möchte, die die Summe mehrere Zahlen berechnet, aber sich eben nicht darauf festlegen möchte, von wie vielen. Mit einer variadischen Funktion ist das gar kein Problem.
+
+Wie funktioniert das ganze also? Als erstes muss man den richtigen \emph{Header} inkludieren.
+
+\begin{lstlisting}[language=c]
+ #include <stdarg.h> 	
+\end{lstlisting}  
+
+Im Funktionskopf müssen wir angeben, dass wir beliebig viele Parameter annehmen möchten. Das sieht so aus
+
+\begin{lstlisting}
+void funktion(int ersterParameter, ...){
+	// Funktionsinhalt
+}
+\end{lstlisting}
+
+Wichtig ist dabei, das immer ein erster Parameter angegeben werden muss. Die restlichen Parameter werden direkt hinter diesem in den Speicher gelegt, und ohne den ersten Parameter, hätte der Computer keine Ahnung, wo er überhaupt anfangen muss, nach den ganzen Parametern zu suchen.
+
+Im \emph{stdarg.h} Header sind (unter anderem) ein Datentyp und vier Funktionen definiert. Der Datentyp heißt \textbf{va\_list} und dient dazu, die ganzen Parameter zu speichern.
+
+
+\begin{itemize}
+	\item va\_start(\textbf{va\_list} argumente, paramN) \\
+	Beginnt den Zugriff auf die Parameter. Benötigt dafür eine \textbf{va\_list} und den letzten fest angegeben Parameter, der vor den beliebigen (...) kommt. Die Parameter werden dann in der va\_list \emph{argumente} gespeichert,
+	\item va\_arg(\textbf{va\_list} argumente, <Datentyp>) \\
+	Gibt den nächsten Parameter zurück und interpretiert diesen als den Datentyp, der im zweiten Parameter angegeben wurde. Bei einem Integer werden als die nächsten 4 Byte angeschaut. Das Element wird dann aus der va\_list \emph{argumente} entfernt.
+	\item va\_copy(\textbf{va\_list} ziel, \textbf{va\_list} quelle) \\
+	Kopiert die va\_list \emph{quelle} in die va\_list \emph{ziel}.
+	\item va\_end(\textbf{va\_list} argumente) \\
+	Beendet den Zugriff auf die Parameter
+\end{itemize}
+
+Das ganze sieht man am besten an einem Beispiel
+
+\lstinputlisting{CodeSnippets/Funktionen/variad.c}
+
 \end{document}
