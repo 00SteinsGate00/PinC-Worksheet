@@ -147,7 +147,7 @@ Im \emph{stdarg.h} Header sind (unter anderem) ein Datentyp und vier Funktionen 
 	\item va\_start(\textbf{va\_list} argumente, paramN) \\
 	Beginnt den Zugriff auf die Parameter. Benötigt dafür eine \textbf{va\_list} und den letzten fest angegeben Parameter, der vor den beliebigen (...) kommt. Die Parameter werden dann in der va\_list \emph{argumente} gespeichert,
 	\item va\_arg(\textbf{va\_list} argumente, <Datentyp>) \\
-	Gibt den nächsten Parameter zurück und interpretiert diesen als den Datentyp, der im zweiten Parameter angegeben wurde. Bei einem Integer werden als die nächsten 4 Byte angeschaut. Das Element wird dann aus der va\_list \emph{argumente} entfernt.
+	Gibt den nächsten Parameter zurück und interpretiert diesen als den Datentyp, der im zweiten Parameter angegeben wurde. Bei einem Integer werden also die nächsten 4 Byte angeschaut. Das Element wird dann aus der va\_list \emph{argumente} entfernt.
 	\item va\_copy(\textbf{va\_list} ziel, \textbf{va\_list} quelle) \\
 	Kopiert die va\_list \emph{quelle} in die va\_list \emph{ziel}.
 	\item va\_end(\textbf{va\_list} argumente) \\
