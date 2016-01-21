@@ -1,0 +1,60 @@
+\documentclass[c_worksheet.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Eigene Header}
+
+Man bindet oft Header Dateien ein, die von anderen Leuten geschrieben wurden, so z.B. \emph{stdio.h}. Diese benötigt man um Zugriff auf Funktionen wie \emph{printf} und \emph{scanf} zu bekommen.
+
+In dem Header \emph{stdio.h} stehen die \textbf{Funktionsdeklarationen}. Die dazugehörigen \textbf{Funktionsdefinitionen} stehen dann üblicherweise in meiner dazugehörigen .c Datei.
+
+Durch das einbinden der Header Datei hat man dann Zugriff auf die Funktionen und Structs, die im Header dekliniert wurden.
+
+
+\section{Struktur}
+
+Wie bereits erwähnt hat erstellt man meistens zu einem Header eine C Datei, die den Code enthält.
+
+Hier wurde mal eine eigene kleine Mathe Bibliothek erstellt und in ein Programm eingebunden. Es gibt folgende Dateien:
+
+\begin{itemize}
+ 	\item \textbf{meinMathe.h} \\
+ 	Hier werden die Funktionen deklariert
+ 	\item \textbf{meinMathe.c} \\
+ 	Hier werden die Funktionen definiert
+ 	\item \textbf{main.c} \\
+ 	Hier wird der meinMathe.h Header eingebunden und ein kleines Programm angelegt
+ \end{itemize} 
+
+ meinMathe.h:
+
+ \lstinputlisting{CodeSnippets/EigeneHeader/meinMathe.h} 
+
+Hier wird einfach nur angegeben, welche Funktionen dieser Header bereit stellt. Nämlich \emph{quadrat}, \emph{potenz} und \emph{fakultaet}. Durch die Deklarierung weiß man auch, welche Parameter und was für einen Rückgabetyp die Funktionen haben.\\
+
+meinMathe.c:
+
+\lstinputlisting{CodeSnippets/EigeneHeader/meinMathe.c}
+
+Hier werden die Funktionen dann wirklich definiert, also es wird angegeben, was die Funktionen eigentlich tun. Das unterscheidet sich nicht von dem, wie wir bisher Funktionen geschrieben haben. Es ist genau das gleiche.\\
+
+main.c
+
+\lstinputlisting{CodeSnippets/EigeneHeader/main.c}
+
+Hier wird dann wirklich ein kleines Programm geschrieben. Durch das einbinden des meinMathe.h Headers sind alle, dort deklarierten Funktionen, verfügbar. Sie können einfach ganz normal aufgerufen werden. 
+
+
+\section{Kompilieren}
+
+Wenn man mit mehreren Dateien arbeitet, muss man auch aufpassen, dass man sie alle mit kompiliert. Wichtig dabei ist, dass Header Dateien \textbf{nicht} kompiliert werden.\\
+
+Der Befehl für obiges Beispiel in eine ausführbare Datei namens main kompiliert sieht so aus:
+
+\begin{lstlisting}[language=bash]
+$ gcc -o main main.c meinMathe.c
+\end{lstlisting} 
+
+Man muss also darauf achten, dass man alle Source Dateien mit kompiliert, da es sonst zu Problemen bei den Abhängigkeiten führt. Für so etwas benutzt man bei größeren Projekten auch ein so genanntes \emph{makefile}.
+
+\end{document}
