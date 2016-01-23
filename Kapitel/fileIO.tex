@@ -40,7 +40,8 @@ int main(void) {
     FILE * in  = fopen("./AusgangsDatei.txt", "r");
     FILE * out = fopen("./ZielDatei.txt", "w");
     int i;
-    fscanf(in, "%d" &i);
+
+    fscanf(in, "%d", &i);
     fprintf(out, "In der AusgangsDatei stand die Zahl: %d", i);
 
     fclose(in);
@@ -55,7 +56,8 @@ int main(void) {
 int main(void) {
     FILE * log = ("./logDatei", "w");
     int i;
-    fscanf(stdin, "%d" &i);
+    
+    fscanf(stdin, "%d", &i);
     fprintf(log, "Der Benutzer hat die Zahl: %d ", i);
     fprintf(log, "auf der Konsole eingetippt");
 
