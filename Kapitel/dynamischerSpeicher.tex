@@ -79,7 +79,7 @@ Speicherplatz, der mit \textbf{malloc} reserviert wurde ist nicht initialisiert.
 
 int main(void) {
     int *ptr;
-    ptr = calloc(3 * sizeof(int));
+    ptr = calloc(3, sizeof(int));
     /* sollte alles 0 sein */
     printf("%d, %d, %d\n"ptr[0], ptr[1], ptr[2]);
     return 0;
