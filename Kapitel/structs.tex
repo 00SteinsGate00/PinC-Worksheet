@@ -78,6 +78,15 @@ zeitpunkt1.jahr = 2015;
 zeitpunkt2.jahr = zeitpunkt1.jahr;
 \end{lstlisting}
 
+Es gibt noch eine kürzere Schreibweise um das struct bei der Initialisierung direkt mit Werte zu füllen. Dabei ist es wichtig die Reihenfolge, in der die Variablen des structs definiert worden sind, zu beachten.
+
+\lstinputlisting{CodeSnippets/EigeneDatentypen/direkte_zuweisung.c}
+
+Das ist vor allem hilfreich wenn man \emph{strings} in der Form von \emph{character arrays} in seinem struct hat. Eine direkte Zuweisung von Text funktioniert nämlich nur direkt bei der Initialisierung. Hierbei empfiehlt es sich \emph{char pointer} zu verwenden. Folgendes Beispiel veranschaulicht dies.
+
+\lstinputlisting{CodeSnippets/EigeneDatentypen/char_arrays.c} 
+
+
 Will man einen neuen Datentyp erstellen schreibt man allgemein:
 \begin{lstlisting}
 struct <name> {
