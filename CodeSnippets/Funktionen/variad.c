@@ -25,6 +25,8 @@ double quadratSumme(int count, ...){
 		qSumme += (summand * summand);
 	}
 
+	va_end(argumente);
+
 	return qSumme;
 
 }
