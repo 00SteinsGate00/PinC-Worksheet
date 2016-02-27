@@ -11,7 +11,7 @@ double quadratSumme(int count, ...){
 	va_list argumente;
 
 	// Startet den Zugriff auf die variablen Parameter
-	// Benoetigt den letzten konkrekt angegebenen Paramter
+	// Benoetigt den letzten konkret angegebenen Paramter
 	va_start(argumente, count);
 
 	// Iterator
