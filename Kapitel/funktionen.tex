@@ -55,12 +55,19 @@ Zum Beispiel die normale Lineare Funktion die man aus der Mathe kennt:
 
 Mit dem \textbf{return} Keyword, beendet man immer die Funktion, in der sich selbiges befindet. Deswegen beendet man auch das Hauptprogramm mit dem \textbf{return 0} am Ende der \emph{main} Funktion.
 
+Das \textbf{return} Keyword beendet immer die Funktion. Alles was danach kommt wird nicht mehr ausgeführt.
+
 \lstinputlisting{CodeSnippets/Funktionen/return.c}
 
 Mit dem \textbf{return}	Keyword liefert man den Wert dahinter ``zurück nach oben''. Im Prinzip kann man sich das so vorstellen, dass die Funktion diesen Wert annimmt, wenn man sie in eine Gleichung schreibt.
 
+Dabei ist der \emph{Rückgabetyp} der Funktion zu beachten. Dieser kann von \textbf{int} bis \textbf{float} jeder Variablentyp sein.
+
 \lstinputlisting{CodeSnippets/Funktionen/return2.c}  
 
+Eine Funktion muss aber nicht zwingend etwas zurück geben. Gibt eine Funktion keinen Wert zurück, hat sie den Rückgabetyp \textbf{void}.
+
+\lstinputlisting{CodeSnippets/Funktionen/void.c} 
 
 \section{Funktionsaufruf} 
 
@@ -83,7 +90,7 @@ Alle Variablen die innerhalb einer Funktion \emph{initialisiert} werden, sind nu
 
 \lstinputlisting{CodeSnippets/Funktionen/sichtbarkeit.c} 
 
- Eine Funktion erzeugt immer eine \textbf{lokale Kopie} der Parameter. Wie im vorangehen Beispiel gesehen, wird das \(y\) aus der \emph{main} Methode nicht verändert, obwohl man es der dummy Funktion übergibt. Diese erzeugt aber ihre eigene Kopie davon und arbeitet nur auf dieser. \\
+ Eine Funktion erzeugt immer eine \textbf{lokale Kopie} der Parameter. Wie im vorangehenden Beispiel gesehen, wird das \(y\) aus der \emph{main} Methode nicht verändert, obwohl man es der dummy Funktion übergibt. Diese erzeugt aber ihre eigene Kopie davon und arbeitet nur auf dieser. \\
 
  Wichtig ist auch, dass Namen doppelt vorkommen können. Folgendes Beispiel behandelt einen Fall, der am Anfang sehr verwirrend ist.
 
