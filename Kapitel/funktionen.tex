@@ -11,14 +11,14 @@
 
 Manchmal hat man ein Stück Code geschrieben und möchte es an mehreren Stellen verwenden. Dann kann man das ganze natürlich mehrfach schreiben, aber sinnvoller ist es eine Funktion zu verwenden.
 
-Solche Funktionen kann amn dann einfach aufrufen, selbst wenn man nicht genau weiß, was genau diese Funktion eigentlich tut. So ein bisschen wie eine kleine magische Wolke.
+Solche Funktionen kann man dann einfach aufrufen, selbst wenn man nicht genau weiß, was genau diese Funktion eigentlich tut. So ein bisschen wie eine kleine magische Wolke.
 
 \begin{figure}[h]
 \center
 \includegraphics[width=0.9\textwidth]{Grafiken/Funktionen/function}
 \end{figure}
 
-Einige solcher Funktionen sind wahrscheinlich bereits bekannt und wurden oft benutzt. So z.B. \textbf{printf} und \textbf{scanf}. \textbf{printf} nimmt als Eingabe einen \emph{String} und liefert als Ausgabe eine Ausgabe auf der Konsole.
+Einige solcher Funktionen sind wahrscheinlich bereits bekannt und wurden oft benutzt. So z.B. \textbf{printf} und \textbf{scanf}. \textbf{printf} nimmt als Eingabe einen \textbf{String} und gibt diesen dann auf der Konsole aus.
 
 Solche Funktionen kann man sich auch selbst definieren. Das allgemeine Schema dazu sieht wie folgt aus:
 
@@ -28,7 +28,7 @@ Solche Funktionen kann man sich auch selbst definieren. Das allgemeine Schema da
 }
 \end{lstlisting}
 
-Der \emph{Rückgabetyp} bezeichnet dabei den Typ des Wertes, den die Funktion am Ende zurück gibt. Also so etwas wie \emph{int}, \emph{float} oder auch \emph{char}. Möchte man nichts zurück geben, ist der \emph{Rückgabetyp} \textbf{void}.
+Der \emph{Rückgabetyp} bezeichnet dabei den Typ des Wertes, den die Funktion am Ende zurück gibt. Also so etwas wie \textbf{int}, \textbf{float} oder auch \textbf{char}. Möchte man nichts zurück geben, ist der \emph{Rückgabetyp} \textbf{void}.
 
 Mit dem \emph{Funktionsnamen} kann man die Funktion später aufrufen.
 
@@ -90,7 +90,7 @@ Alle Variablen die innerhalb einer Funktion \emph{initialisiert} werden, sind nu
 
 \lstinputlisting{CodeSnippets/Funktionen/sichtbarkeit.c} 
 
- Eine Funktion erzeugt immer eine \textbf{lokale Kopie} der Parameter. Wie im vorangehenden Beispiel gesehen, wird das \(y\) aus der \emph{main} Methode nicht verändert, obwohl man es der dummy Funktion übergibt. Diese erzeugt aber ihre eigene Kopie davon und arbeitet nur auf dieser. \\
+ Eine Funktion erzeugt immer eine \textbf{lokale Kopie} der Parameter. Wie im vorangehenden Beispiel gesehen, wird das \(y\) aus der \emph{main} Methode nicht verändert, obwohl man es in der dummy Funktion ebenfalls eine Variable names \(y\) gibt. Diese wurde jedoch innerhalb der dummy Funktion angelegt und hat nichts mit dem \(y\) aus der main Funktion zu tun. Nach der schließenden Klammer der dummy Funktion \emph{stribt} dieses \(y\) wieder. \\
 
  Wichtig ist auch, dass Namen doppelt vorkommen können. Folgendes Beispiel behandelt einen Fall, der am Anfang sehr verwirrend ist.
 
@@ -102,7 +102,7 @@ Die Variable die wir an die square Funktion übergeben, könnte jeden erdenklich
 
 \section{Beispiele}
 
-Funktionen müssen weder Parameter, noch etwas zurück geben, wie folgendes Beispiel zeigt.
+Funktionen müssen weder Parameter annehmen, noch etwas zurück geben, wie folgendes Beispiel zeigt.
 
 \lstinputlisting{CodeSnippets/Funktionen/foo.c}  
 
