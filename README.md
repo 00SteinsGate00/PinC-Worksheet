@@ -6,7 +6,7 @@ It explains all the concepts from the basics, such as *variables* to more advanc
 
 In the end some practise exercises are included as well.
 
-# Complining
+# Compiling
 
 This document can be compiled by compiling **c_worksheet.tex** with your everyday **LateX** distribution.
 
